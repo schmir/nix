@@ -1,0 +1,10 @@
+#! /bin/sh
+
+nix print-dev-env |
+    grep -v LINENO |
+    grep -v EPOCHSECONDS |
+    grep -v EPOCHREALTIME |
+    grep -v 'export NIX_BUILD' |
+    grep -v 'export TMP' |
+    grep -v 'export TEMP' \
+        >"$HOME/.config/zsh/.zshenv-local"
