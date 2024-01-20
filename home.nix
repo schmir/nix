@@ -18,6 +18,17 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
+    pkgs.coreutils
+    pkgs.moreutils
+    pkgs.git
+
+    pkgs.emacs
+    pkgs.emacsPackages.vterm
+    pkgs.hunspell
+    pkgs.hunspellDicts.de_DE
+    pkgs.hunspellDicts.en_US
+    pkgs.nixfmt
+
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
