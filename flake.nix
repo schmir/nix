@@ -10,20 +10,32 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, ... }@inputs:
     let
-      system = "aarch64-darwin";
-      pkgs = nixpkgs.legacyPackages.${system};
+      mkHomeConfig = system: modules:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs { inherit system; };
+          modules = modules;
+          extraSpecialArgs = { inherit inputs system; };
+        };
+      allModules = [
+        ./home/base.nix
+        ./home/golang.nix
+        ./home/clojure.nix
+        ./home/most.nix
+        ./home/texlive.nix
+      ];
     in {
-      homeConfigurations."ralf" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+      homeConfigurations."neso" =
+        mkHomeConfig "aarch64-darwin" ([ ./machine/neso.nix ] ++ allModules);
 
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [ ./home.nix ];
+      homeConfigurations."neso-empty" =
+        mkHomeConfig "aarch64-darwin" [ ./machine/neso.nix ];
 
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
-      };
+      homeConfigurations."cirrus" =
+        mkHomeConfig "x86_64-linux" ([ ./machine/cirrus.nix ] ++ allModules);
+
+      homeConfigurations."cirrus-empty" =
+        mkHomeConfig "x86_64-linux" [ ./machine/cirrus.nix ];
     };
 }

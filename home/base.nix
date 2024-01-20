@@ -1,33 +1,30 @@
 { config, pkgs, ... }:
 
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
-  home.username = "ralf";
-  home.homeDirectory = "/Users/ralf";
+  home.packages = with pkgs; [
+    coreutils
+    moreutils
+    git
+    ripgrep
+    rlwrap
 
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "23.11"; # Please read the comment before changing.
+    emacs
+    emacsPackages.vterm
+    hunspell
+    hunspellDicts.de_DE
+    hunspellDicts.en_US
+    nixfmt
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  home.packages = [
-    pkgs.coreutils
-    pkgs.moreutils
-    pkgs.git
+    fzf
+    entr
+    curl
+    jq
+    bat
+    fd
 
-    pkgs.emacs
-    pkgs.emacsPackages.vterm
-    pkgs.hunspell
-    pkgs.hunspellDicts.de_DE
-    pkgs.hunspellDicts.en_US
-    pkgs.nixfmt
+    # network tools
+    dogdns
+    mtr
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -84,3 +81,4 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
+

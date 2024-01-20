@@ -3,5 +3,5 @@
 Bootstrap this with
 
 ``` shell
-nix run --no-write-lock-file github:nix-community/home-manager/ -- --flake "." switch
+nix run --no-write-lock-file github:nix-community/home-manager/ -- --flake ".#neso" switch
 ```
