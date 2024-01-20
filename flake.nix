@@ -37,5 +37,12 @@
 
       homeConfigurations."cirrus-empty" =
         mkHomeConfig "x86_64-linux" [ ./machine/cirrus.nix ];
+
+      homeConfigurations."arm" =
+        mkHomeConfig "aarch64-linux" ([ ./machine/cirrus.nix ] ++ allModules);
+
+      homeConfigurations."arm-empty" =
+        mkHomeConfig "aarch64-linux" [ ./machine/cirrus.nix ];
+
     };
 }
