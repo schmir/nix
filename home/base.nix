@@ -7,6 +7,7 @@
     git
     ripgrep
     rlwrap
+    file
 
     fzf
     entr
