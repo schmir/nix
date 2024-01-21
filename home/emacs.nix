@@ -1,15 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nox, ... }:
 
 let
-  emacs = pkgs.emacs-git;
-  #emacs = pkgs.emacs;
-  emacs-with-packages = (pkgs.emacsPackagesFor emacs).emacsWithPackages
-    (epkgs: [
-      epkgs.magit
-      epkgs.tree-sitter
-      epkgs.tree-sitter-langs
-      epkgs.vterm
-    ]);
+
+  emacs = if nox then pkgs.emacs-nox else pkgs.emacs-git;
+  emacs-packages = epkgs: with epkgs; [ vterm ];
+  emacs-with-packages =
+    (pkgs.emacsPackagesFor emacs).emacsWithPackages (emacs-packages);
 in {
   programs.emacs = {
     enable = true;
