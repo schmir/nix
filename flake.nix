@@ -4,22 +4,30 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs:
+  outputs = { nixpkgs, home-manager, emacs-overlay, ... }@inputs:
     let
+      overlays = [ (import emacs-overlay) ];
       mkHomeConfig = system: modules:
         home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { inherit system; };
+          pkgs = import nixpkgs { inherit system overlays; };
           modules = modules;
+
           extraSpecialArgs = { inherit inputs system; };
         };
       allModules = [
         ./home/base.nix
+        ./home/emacs.nix
         ./home/golang.nix
         ./home/clojure.nix
         ./home/most.nix
