@@ -25,14 +25,14 @@
 
           extraSpecialArgs = { inherit inputs system nox; };
         };
-      allModules = [
+      mostModules = [
         ./home/base.nix
         ./home/emacs.nix
         ./home/golang.nix
         ./home/clojure.nix
         ./home/most.nix
-        ./home/texlive.nix
       ];
+      allModules = (mostModules ++ [ ./home/texlive.nix ]);
     in {
       homeConfigurations."neso" = mkHomeConfig "aarch64-darwin" false
         ([ ./machine/neso.nix ] ++ allModules);
@@ -45,6 +45,9 @@
 
       homeConfigurations."cirrus-empty" =
         mkHomeConfig "x86_64-linux" false [ ./machine/cirrus.nix ];
+
+      homeConfigurations."cirrus-nox" = mkHomeConfig "x86_64-linux" true
+        ([ ./machine/cirrus.nix ] ++ mostModules);
 
       homeConfigurations."arm" = mkHomeConfig "aarch64-linux" true
         ([ ./machine/cirrus.nix ] ++ allModules);
