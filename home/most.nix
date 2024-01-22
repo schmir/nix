@@ -26,6 +26,9 @@
     pinentry
     # pinentry_mac
 
+    imagemagick
+    img2pdf
+
     rclone
     restic
 
