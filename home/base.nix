@@ -1,7 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nox, ... }:
 
-{
-  home.packages = with pkgs; [
+let shells = if nox then [ ] else [ pkgs.zsh pkgs.fish ];
+in {
+  home.packages = shells ++ (with pkgs; [
     coreutils
     moreutils
     lnav
@@ -40,7 +41,7 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-  ];
+  ]);
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
