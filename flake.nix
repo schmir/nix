@@ -32,10 +32,10 @@
         ./home/clojure.nix
         ./home/most.nix
       ];
-      allModules = (mostModules ++ [ ./home/texlive.nix ]);
+      allModules = (mostModules ++ [ ./home/texlive.nix ./home/x11.nix ]);
     in {
       homeConfigurations."neso" = mkHomeConfig "aarch64-darwin" false
-        ([ ./machine/neso.nix ] ++ allModules);
+        ([ ./machine/neso.nix ] ++ mostModules ++ [ ./home/texlive.nix ]);
 
       homeConfigurations."neso-empty" =
         mkHomeConfig "aarch64-darwin" false [ ./machine/neso.nix ];
