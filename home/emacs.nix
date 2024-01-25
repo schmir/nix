@@ -17,5 +17,6 @@ in {
     hunspellDicts.de_DE
     hunspellDicts.en_US
     nixfmt
+    msmtp
   ];
 }
