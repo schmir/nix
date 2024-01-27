@@ -20,6 +20,7 @@
     shfmt
 
     pass
+    gnupg
     apg
     pwgen
     yadm

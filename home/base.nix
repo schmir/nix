@@ -1,6 +1,17 @@
 { config, pkgs, nox, ... }:
 
-let shells = if nox then [ ] else [ pkgs.zsh pkgs.fish pkgs.direnv ];
+let
+  shells = if nox then
+    [ ]
+  else
+    with pkgs; [
+      zsh
+      zsh-completions
+      nix-zsh-completions
+      zsh-autosuggestions
+      fish
+      direnv
+    ];
 in {
   home.packages = shells ++ (with pkgs; [
     coreutils
