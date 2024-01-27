@@ -1,6 +1,6 @@
 { config, pkgs, nox, ... }:
 
-let shells = if nox then [ ] else [ pkgs.zsh pkgs.fish ];
+let shells = if nox then [ ] else [ pkgs.zsh pkgs.fish pkgs.direnv ];
 in {
   home.packages = shells ++ (with pkgs; [
     coreutils
