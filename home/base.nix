@@ -12,6 +12,7 @@ in {
     ripgrep
     rlwrap
     file
+    just
 
     fzf
     entr
