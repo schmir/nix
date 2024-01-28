@@ -41,7 +41,7 @@
         mkHomeConfig "aarch64-darwin" false [ ./machine/neso.nix ];
 
       homeConfigurations."cirrus" = mkHomeConfig "x86_64-linux" false
-        ([ ./machine/cirrus.nix ] ++ allModules);
+        ([ ./machine/cirrus.nix ./home/syncthing.nix ] ++ allModules);
 
       homeConfigurations."cirrus-empty" =
         mkHomeConfig "x86_64-linux" false [ ./machine/cirrus.nix ];
