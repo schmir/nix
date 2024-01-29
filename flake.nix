@@ -43,6 +43,9 @@
       homeConfigurations."cirrus" = mkHomeConfig "x86_64-linux" false
         ([ ./machine/cirrus.nix ./home/syncthing.nix ] ++ allModules);
 
+      homeConfigurations."triton" = mkHomeConfig "x86_64-linux" false
+        ([ ./machine/cirrus.nix ./home/syncthing.nix ] ++ allModules);
+
       homeConfigurations."cirrus-empty" =
         mkHomeConfig "x86_64-linux" false [ ./machine/cirrus.nix ];
 
