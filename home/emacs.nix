@@ -11,6 +11,10 @@ in {
     enable = true;
     package = emacs-with-packages;
   };
+  services.emacs = {
+    enable = true;
+    package = emacs-with-packages;
+  };
 
   home.packages = with pkgs; [
     hunspell
