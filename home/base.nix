@@ -11,6 +11,7 @@ let
       zsh-autosuggestions
       fish
       direnv
+      zoxide
     ];
 in {
   home.packages = shells ++ (with pkgs; [
