@@ -12,7 +12,7 @@ in {
     package = emacs-with-packages;
   };
   services.emacs = {
-    enable = true;
+    enable = pkgs.stdenv.isLinux;
     package = emacs-with-packages;
   };
 
