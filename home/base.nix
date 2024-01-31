@@ -11,6 +11,7 @@ let
       zsh-autosuggestions
       fish
       direnv
+      nix-direnv
       zoxide
     ];
 in {
