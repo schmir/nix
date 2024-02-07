@@ -22,5 +22,6 @@ in {
     hunspellDicts.en_US
     nixfmt
     msmtp
+    multimarkdown
   ];
 }
