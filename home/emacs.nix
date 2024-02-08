@@ -23,9 +23,12 @@ in {
     nixfmt
     msmtp
     multimarkdown
+    nodePackages.bash-language-server
     # eglot takes ages to startup when using pyright as language server
     #nodePackages.pyright
     python311Packages.python-lsp-server
+    dockerfile-language-server-nodejs
+    nil
     ruff
   ];
 }
