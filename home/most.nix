@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, gpg240-pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -20,7 +20,7 @@
     shfmt
 
     pass
-    gnupg
+    gpg240-pkgs.gnupg
     apg
     pwgen
     yadm

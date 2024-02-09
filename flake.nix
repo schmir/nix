@@ -2,6 +2,9 @@
   description = "Home Manager configuration of ralf";
 
   inputs = {
+    gpg240-nixpkgs.url =
+      "github:nixos/nixpkgs?rev=5a8650469a9f8a1958ff9373bd27fb8e54c4365d";
+
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     emacs-overlay = {
@@ -15,15 +18,17 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, emacs-overlay, ... }@inputs:
+  outputs =
+    { nixpkgs, gpg240-nixpkgs, home-manager, emacs-overlay, ... }@inputs:
     let
-      overlays = [ (import emacs-overlay) ];
       mkHomeConfig = system: nox: modules:
-        home-manager.lib.homeManagerConfiguration {
+        let
+          overlays = [ (import emacs-overlay) ];
+          gpg240-pkgs = import gpg240-nixpkgs { inherit system overlays; };
+        in home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs { inherit system overlays; };
           modules = modules;
-
-          extraSpecialArgs = { inherit inputs system nox; };
+          extraSpecialArgs = { inherit inputs system nox gpg240-pkgs; };
         };
       mostModules = [
         ./home/base.nix
