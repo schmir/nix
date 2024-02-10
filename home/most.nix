@@ -19,7 +19,7 @@
     shellcheck
     shfmt
 
-    pass
+    gpg240-pkgs.pass
     gpg240-pkgs.gnupg
     apg
     pwgen
