@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    go
+    go_1_22
     gopls
     golangci-lint
     gotestsum
