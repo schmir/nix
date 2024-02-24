@@ -1,4 +1,9 @@
-{ config, pkgs, gpg240-pkgs, ... }:
+{
+  config,
+  pkgs,
+  gpg240-pkgs,
+  ...
+}:
 
 {
   home.packages = with pkgs; [
@@ -32,6 +37,5 @@
 
     rclone
     restic
-
   ];
 }

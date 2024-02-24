@@ -1,4 +1,9 @@
-{ config, pkgs, nox, ... }:
+{
+  config,
+  pkgs,
+  nox,
+  ...
+}:
 
 {
   services.syncthing.enable = true;

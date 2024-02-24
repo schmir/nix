@@ -1,61 +1,71 @@
-{ config, pkgs, nox, ... }:
+{
+  config,
+  pkgs,
+  nox,
+  ...
+}:
 
 let
-  shells = if nox then
-    [ ]
-  else
-    with pkgs; [
-      zsh
-      zsh-completions
-      nix-zsh-completions
-      zsh-autosuggestions
-      fish
-      direnv
-      nix-direnv
-      zoxide
-    ];
-in {
-  home.packages = shells ++ (with pkgs; [
-    coreutils
-    moreutils
-    lnav
-    tealdeer
+  shells =
+    if nox then
+      [ ]
+    else
+      with pkgs;
+      [
+        zsh
+        zsh-completions
+        nix-zsh-completions
+        zsh-autosuggestions
+        fish
+        direnv
+        nix-direnv
+        zoxide
+      ];
+in
+{
+  home.packages =
+    shells
+    ++ (with pkgs; [
+      coreutils
+      moreutils
+      lnav
+      tealdeer
 
-    git
-    ripgrep
-    rlwrap
-    file
-    just
+      git
+      ripgrep
+      rlwrap
+      file
+      just
 
-    fzf
-    entr
-    curl
-    jq
-    bat
-    fd
+      fzf
+      entr
+      curl
+      jq
+      bat
+      fd
 
-    # network tools
-    dogdns
-    mtr
-    netcat
+      # network tools
+      dogdns
+      mtr
+      netcat
 
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
+      # # Adds the 'hello' command to your environment. It prints a friendly
+      # # "Hello, world!" when run.
+      # pkgs.hello
 
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+      # # It is sometimes useful to fine-tune packages, for example, by applying
+      # # overrides. You can do that directly here, just don't forget the
+      # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
+      # # fonts?
+      # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-  ]);
+      # # You can also create simple shell scripts directly inside your
+      # # configuration. For example, this adds a command 'my-hello' to your
+      # # environment:
+      # (pkgs.writeShellScriptBin "my-hello" ''
+      #   echo "Hello, ${config.home.username}!"
+      # '')
+    ]);
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -94,4 +104,3 @@ in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
-
