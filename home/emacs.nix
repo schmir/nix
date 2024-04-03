@@ -8,7 +8,11 @@
 let
 
   emacs = if nox then pkgs.emacs-nox else pkgs.emacs-git;
-  emacs-packages = epkgs: with epkgs; [ vterm ];
+  emacs-packages =
+    epkgs: with epkgs; [
+      vterm
+      treesit-grammars.with-all-grammars
+    ];
   emacs-with-packages = (pkgs.emacsPackagesFor emacs).emacsWithPackages (emacs-packages);
 in
 {
