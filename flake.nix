@@ -2,6 +2,7 @@
   description = "Home Manager configuration of ralf";
 
   inputs = {
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     gpg240-nixpkgs.url = "github:nixos/nixpkgs?rev=5a8650469a9f8a1958ff9373bd27fb8e54c4365d";
 
     # Specify the source of Home Manager and Nixpkgs.
@@ -20,6 +21,7 @@
   outputs =
     {
       nixpkgs,
+      nixpkgs-stable,
       gpg240-nixpkgs,
       home-manager,
       emacs-overlay,
@@ -31,6 +33,7 @@
         let
           overlays = [ (import emacs-overlay) ];
           gpg240-pkgs = import gpg240-nixpkgs { inherit system overlays; };
+          pkgs-stable = import nixpkgs-stable { inherit system overlays; };
         in
         home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs { inherit system overlays; };
@@ -41,6 +44,7 @@
               system
               nox
               gpg240-pkgs
+              pkgs-stable
               ;
           };
         };

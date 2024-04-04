@@ -1,8 +1,13 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  pkgs-stable,
+  ...
+}:
 
 {
   home.packages = with pkgs; [
-    texliveFull
+    pkgs-stable.texliveFull
     pdftk
     ghostscript_headless
   ];
