@@ -36,6 +36,7 @@ in
       rlwrap
       file
       just
+      nvd
 
       fzf
       entr
