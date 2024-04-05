@@ -2,13 +2,18 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
@@ -43,8 +48,6 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  
-
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
@@ -64,45 +67,60 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ralf = {
-     isNormalUser = true;
-     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-     packages = with pkgs; [
-          firefox
-     ];
-   };
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    isNormalUser = true;
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    packages = with pkgs; [ firefox ];
+  };
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-     emacs
-     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     wget
-     zsh
-     git
-     spice-vdagent
-     gnome.gnome-terminal
-   ];
+  environment.systemPackages =
+    let
+      emacs = pkgs.emacs-nox;
+      emacs-packages =
+        epkgs: with epkgs; [
+          apheleia
+          use-package
+          nix-mode
+        ];
+      emacs-with-packages = (pkgs.emacsPackagesFor emacs).emacsWithPackages (emacs-packages);
+    in
+    with pkgs;
+    [
+      emacs-with-packages
+      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      wget
+      zsh
+      git
+      spice-vdagent
+      gnome.gnome-terminal
+    ];
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
- environment.gnome.excludePackages = (with pkgs; [
-  gnome-photos
-  gnome-tour
-]) ++ (with pkgs.gnome; [
-  cheese # webcam tool
-  gnome-music
-#  gnome-terminal
-  gedit # text editor
-  epiphany # web browser
-  geary # email reader
-  evince # document viewer
-  gnome-characters
-  totem # video player
-  tali # poker game
-  iagno # go game
-  hitori # sudoku game
-  atomix # puzzle game
-]);
-  
+  environment.gnome.excludePackages =
+    (with pkgs; [
+      gnome-photos
+      gnome-tour
+    ])
+    ++ (with pkgs.gnome; [
+      cheese # webcam tool
+      gnome-music
+      #  gnome-terminal
+      gedit # text editor
+      epiphany # web browser
+      geary # email reader
+      evince # document viewer
+      gnome-characters
+      totem # video player
+      tali # poker game
+      iagno # go game
+      hitori # sudoku game
+      atomix # puzzle game
+    ]);
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -144,6 +162,4 @@
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }
-
