@@ -86,6 +86,14 @@
         ++ allModules
       );
 
+      homeConfigurations."nixos" = mkHomeConfig "x86_64-linux" false (
+        [
+          ./machine/cirrus.nix
+#          ./home/syncthing.nix
+        ]
+        ++ allModules
+      );
+
       homeConfigurations."cirrus-empty" = mkHomeConfig "x86_64-linux" false [ ./machine/cirrus.nix ];
 
       homeConfigurations."cirrus-nox" = mkHomeConfig "x86_64-linux" true (
