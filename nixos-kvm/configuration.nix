@@ -6,6 +6,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 
@@ -97,6 +98,7 @@
       git
       spice-vdagent
       gnome.gnome-terminal
+      inputs.nixfmt.packages.${system}.nixfmt
     ];
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
