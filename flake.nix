@@ -16,6 +16,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixfmt.url = "github:NixOS/nixfmt";
   };
 
   outputs =
@@ -25,6 +27,7 @@
       gpg240-nixpkgs,
       home-manager,
       emacs-overlay,
+      nixfmt,
       ...
     }@inputs:
     let

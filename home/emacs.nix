@@ -2,6 +2,7 @@
   config,
   pkgs,
   nox,
+  inputs,
   ...
 }:
 
@@ -30,7 +31,8 @@ in
     hunspell
     hunspellDicts.de_DE
     hunspellDicts.en_US
-    nixfmt-rfc-style
+    #nixfmt-rfc-style
+    inputs.nixfmt.packages.${system}.nixfmt
     msmtp
     multimarkdown
     nodePackages.bash-language-server
