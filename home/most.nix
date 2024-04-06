@@ -18,7 +18,8 @@
       cloc
       pre-commit
       nodejs
-
+      python3
+      
       # git
       git
       tig
