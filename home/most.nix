@@ -38,6 +38,8 @@
 
       rclone
       restic
+
+      nixos-rebuild
     ]
     ++ (if pkgs.stdenv.isDarwin then [ pinentry_mac ] else [ pinentry ]);
 }
