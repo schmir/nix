@@ -29,6 +29,7 @@
             eat
           ];
         emacs-with-packages = (pkgs.emacsPackagesFor emacs).emacsWithPackages (emacs-packages);
+        emacs-nox = (pkgs.emacsPackagesFor pkgs.emacs-nox).emacsWithPackages (emacs-packages);
       in
       {
         apps.default = {
@@ -37,6 +38,7 @@
         };
         defaultPackage = emacs-with-packages;
         packages.default = emacs-with-packages;
+        packages.emacs-nox = emacs-nox;
       }
     );
 }

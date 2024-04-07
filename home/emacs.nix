@@ -7,23 +7,20 @@
 }:
 
 let
-
-  emacs = if nox then pkgs.emacs-nox else pkgs.emacs-git;
-  emacs-packages =
-    epkgs: with epkgs; [
-      vterm
-      treesit-grammars.with-all-grammars
-    ];
-  emacs-with-packages = (pkgs.emacsPackagesFor emacs).emacsWithPackages (emacs-packages);
+  emacs =
+    if nox then
+      inputs.schmir-emacs.packages.${pkgs.system}.emacs-nox
+    else
+      inputs.schmir-emacs.packages.${pkgs.system}.default;
 in
 {
   programs.emacs = {
     enable = true;
-    package = emacs-with-packages;
+    package = emacs;
   };
   services.emacs = {
     enable = pkgs.stdenv.isLinux;
-    package = emacs-with-packages;
+    package = emacs;
     startWithUserSession = "graphical";
   };
 

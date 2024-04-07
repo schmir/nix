@@ -18,6 +18,7 @@
     };
 
     nixfmt.url = "github:NixOS/nixfmt";
+    schmir-emacs.url = "path:./emacs";
   };
 
   outputs =
@@ -28,6 +29,7 @@
       home-manager,
       emacs-overlay,
       nixfmt,
+      schmir-emacs,
       ...
     }@inputs:
     let
@@ -92,7 +94,7 @@
       homeConfigurations."nixos" = mkHomeConfig "x86_64-linux" false (
         [
           ./machine/cirrus.nix
-#          ./home/syncthing.nix
+          #          ./home/syncthing.nix
         ]
         ++ allModules
       );
