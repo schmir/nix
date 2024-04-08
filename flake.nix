@@ -18,7 +18,7 @@
     };
 
     nixfmt.url = "github:NixOS/nixfmt";
-    schmir-emacs.url = "path:./emacs";
+    schmir-emacs.url = "github:schmir/.emacs.d";
   };
 
   outputs =
