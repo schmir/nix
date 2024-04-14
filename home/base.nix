@@ -41,6 +41,7 @@ in
       fzf
       entr
       curl
+      wget
       jq
       bat
       fd
