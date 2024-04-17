@@ -39,5 +39,6 @@ in
     dockerfile-language-server-nodejs
     nil
     ruff
+    clojure-lsp
   ];
 }
