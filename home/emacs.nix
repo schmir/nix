@@ -33,6 +33,7 @@ in
     msmtp
     multimarkdown
     nodePackages.bash-language-server
+    nodePackages.typescript-language-server
     # eglot takes ages to startup when using pyright as language server
     #nodePackages.pyright
     python311Packages.python-lsp-server
