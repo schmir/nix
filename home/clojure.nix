@@ -7,5 +7,6 @@
     neil
     clj-kondo
     leiningen
+    zprint
   ];
 }
