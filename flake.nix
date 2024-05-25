@@ -78,6 +78,7 @@
       homeConfigurations."cirrus" = mkHomeConfig "x86_64-linux" false (
         [
           ./machine/cirrus.nix
+          ./home/fonts.nix
           ./home/syncthing.nix
         ]
         ++ allModules
