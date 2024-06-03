@@ -19,6 +19,15 @@
 
     nixfmt.url = "github:NixOS/nixfmt";
     schmir-emacs.url = "github:schmir/.emacs.d";
+    webcam-filters = {
+      url = "github:jashandeep-sohi/webcam-filters";
+      #url = "github:schmir/webcam-filters";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixgl = {
+      url = "github:nix-community/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -30,18 +39,26 @@
       emacs-overlay,
       nixfmt,
       schmir-emacs,
+      webcam-filters,
+      nixgl,
       ...
     }@inputs:
     let
       mkHomeConfig =
         system: nox: modules:
         let
-          overlays = [ (import emacs-overlay) ];
+          overlays = [
+            (import emacs-overlay)
+            nixgl.overlay
+          ];
           gpg240-pkgs = import gpg240-nixpkgs { inherit system overlays; };
           pkgs-stable = import nixpkgs-stable { inherit system overlays; };
         in
         home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { inherit system overlays; };
+          pkgs = import nixpkgs {
+            inherit system overlays;
+            config.allowUnfree = true;
+          };
           modules = modules;
           extraSpecialArgs = {
             inherit
@@ -79,6 +96,7 @@
         [
           ./machine/cirrus.nix
           ./home/fonts.nix
+          ./home/webcam.nix
           ./home/syncthing.nix
         ]
         ++ allModules
