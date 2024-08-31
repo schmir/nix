@@ -17,8 +17,8 @@ let
         nix-zsh-completions
         zsh-autosuggestions
         fish
-        direnv
-        nix-direnv
+        # direnv
+        # nix-direnv
         zoxide
       ];
 in
@@ -106,6 +106,9 @@ in
     # EDITOR = "emacs";
   };
 
+  programs.direnv.enable = true;
+  programs.direnv.enableZshIntegration = true;
+  programs.direnv.nix-direnv.enable = true;
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
