@@ -106,6 +106,7 @@
         [
           ./machine/cirrus.nix
           ./home/syncthing.nix
+          ./home/lulu.nix
         ]
         ++ allModules
       );
