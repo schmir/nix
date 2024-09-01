@@ -20,7 +20,15 @@ let
         # direnv
         # nix-direnv
         zoxide
-      ];
+      ]
+      ++ (
+        if pkgs.stdenv.isDarwin then
+          [
+            bash
+          ]
+        else
+          [ ]
+      );
 in
 {
   home.packages =
