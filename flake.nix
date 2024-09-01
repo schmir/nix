@@ -87,7 +87,12 @@
     in
     {
       homeConfigurations."neso" = mkHomeConfig "aarch64-darwin" false (
-        [ ./machine/neso.nix ] ++ mostModules ++ [ ./home/texlive.nix ]
+        [ ./machine/neso.nix ]
+        ++ mostModules
+        ++ [
+          ./home/texlive.nix
+          ./home/lulu.nix
+        ]
       );
 
       homeConfigurations."neso-empty" = mkHomeConfig "aarch64-darwin" false [ ./machine/neso.nix ];
