@@ -7,16 +7,16 @@ update: update-emacs update-nixpkgs
 
 # Update emacs
 update-emacs:
-    nix flake update schmir-emacs
+    nix flake lock --update-input schmir-emacs
 
 # Update to latest nixpkgs-unstable
 update-nixpkgs:
-    nix flake update nixpkgs
-    nix flake update home-manager
+    nix flake lock --update-input nixpkgs
+    nix flake lock --update-input home-manager
 
 # Update texlive by updating nixpkgs-stable
 update-texlive:
-    nix flake update nixpkgs-stable
+    nix flake lock --update-input nixpkgs-stable
 
 # Run home-manager switch
 home-manager:
