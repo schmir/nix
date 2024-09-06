@@ -20,6 +20,7 @@
       pre-commit
       nodejs
       python3
+      uv
 
       # git
       git
