@@ -2,6 +2,7 @@
   config,
   pkgs,
   gpg240-pkgs,
+  inputs,
   ...
 }:
 
@@ -40,6 +41,7 @@
       restic
 
       nixos-rebuild
+      inputs.nix-index.packages.${pkgs.system}.default
     ]
     ++ (if pkgs.stdenv.isDarwin then [ pinentry_mac ] else [ pinentry ]);
 }

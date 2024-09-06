@@ -28,6 +28,8 @@
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-index.url = "github:nix-community/nix-index";
+    nix-index.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -39,6 +41,7 @@
       emacs-overlay,
       nixfmt,
       schmir-emacs,
+      nix-index,
       webcam-filters,
       nixgl,
       ...
