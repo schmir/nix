@@ -36,6 +36,7 @@ in
     ++ (with pkgs; [
       coreutils
       moreutils
+      psmisc
       lnav
       tealdeer
 
