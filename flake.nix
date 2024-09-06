@@ -116,6 +116,15 @@
         ++ allModules
       );
 
+      homeConfigurations."galatea" = mkHomeConfig "x86_64-linux" false (
+        [
+          ./machine/cirrus.nix
+          ./home/syncthing.nix
+          ./home/lulu.nix
+        ]
+        ++ allModules
+      );
+
       homeConfigurations."nixos" = mkHomeConfig "x86_64-linux" false (
         [
           ./machine/cirrus.nix
