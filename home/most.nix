@@ -25,6 +25,7 @@
       # git
       git
       tig
+      diffstat
       difftastic
       shellcheck
       shfmt

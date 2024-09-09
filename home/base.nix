@@ -41,6 +41,7 @@ in
       tealdeer
 
       git
+      git-lfs
       ripgrep
       rlwrap
       file
