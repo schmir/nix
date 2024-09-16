@@ -15,6 +15,7 @@ in
 {
   home.packages = with pkgs; [
     my-google-cloud-sdk
+    hadolint
     kubectl
     #poppler_utils # pdftotext
   ];
