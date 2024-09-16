@@ -17,6 +17,7 @@ in
     my-google-cloud-sdk
     hadolint
     kubectl
+    kubectx
     #poppler_utils # pdftotext
   ];
   # ++ (if pkgs.stdenv.isDarwin then [ pinentry_mac ] else [ pinentry ]);
