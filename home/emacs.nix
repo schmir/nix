@@ -41,5 +41,6 @@ in
     nil
     ruff
     clojure-lsp
+    emacs-lsp-booster
   ];
 }
