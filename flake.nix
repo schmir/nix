@@ -104,7 +104,7 @@
         [
           ./machine/cirrus.nix
           ./home/fonts.nix
-          ./home/webcam.nix
+          # ./home/webcam.nix
           ./home/syncthing.nix
         ]
         ++ allModules
