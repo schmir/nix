@@ -100,12 +100,13 @@
 
       homeConfigurations."neso-empty" = mkHomeConfig "aarch64-darwin" false [ ./machine/neso.nix ];
 
-      homeConfigurations."cirrus" = mkHomeConfig "x86_64-linux" false (
+      homeConfigurations."sao" = mkHomeConfig "x86_64-linux" false (
         [
           ./machine/cirrus.nix
           ./home/fonts.nix
           # ./home/webcam.nix
           ./home/syncthing.nix
+          ./home/lulu.nix
         ]
         ++ allModules
       );
