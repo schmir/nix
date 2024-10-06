@@ -42,6 +42,8 @@
       rclone
       restic
 
+      hyperfine
+
       nixos-rebuild
       inputs.nix-index.packages.${pkgs.system}.default
     ]
