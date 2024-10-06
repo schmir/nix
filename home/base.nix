@@ -56,6 +56,7 @@ in
         jq
         bat
         fd
+        eza
 
         # network tools
         dogdns
