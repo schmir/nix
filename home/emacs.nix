@@ -25,23 +25,20 @@ in
   };
 
   home.packages = with pkgs; [
+    clojure-lsp
+    dockerfile-language-server-nodejs
+    dprint
+    emacs-lsp-booster
     hunspell
     hunspellDicts.de_DE
     hunspellDicts.en_US
-    #nixfmt-rfc-style
     inputs.nixfmt.packages.${system}.nixfmt
     msmtp
     multimarkdown
-    nodePackages.bash-language-server
-    nodePackages.typescript-language-server
-    nodePackages.prettier
-    # eglot takes ages to startup when using pyright as language server
-    #nodePackages.pyright
-    #python311Packages.python-lsp-server
-    dockerfile-language-server-nodejs
     nil
+    nodePackages.bash-language-server
+    nodePackages.prettier
+    nodePackages.typescript-language-server
     ruff
-    clojure-lsp
-    emacs-lsp-booster
   ];
 }
