@@ -42,6 +42,7 @@ in
         lnav
         tealdeer
 
+        jujutsu
         git
         git-lfs
         ripgrep
