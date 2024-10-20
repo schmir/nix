@@ -50,6 +50,7 @@ in
         file
         just
         nvd
+        mr
 
         fzf
         entr
