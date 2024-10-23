@@ -69,6 +69,7 @@ in
         zip
         unzip
 
+        graphviz
         # # Adds the 'hello' command to your environment. It prints a friendly
         # # "Hello, world!" when run.
         # pkgs.hello
