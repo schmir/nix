@@ -51,6 +51,7 @@ in
         just
         nvd
         mr
+        meld
 
         fzf
         entr
