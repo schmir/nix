@@ -486,11 +486,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1729089413,
-        "narHash": "sha256-118ehizr1NIyF13d5FDdhkSiGsqCl7nt7lNZNWZ+pdk=",
+        "lastModified": 1730325569,
+        "narHash": "sha256-xiZIl8yh/odH+Vuc1WiW+eDI1Ahgj6CQ/1atq/zjTJ0=",
         "owner": "schmir",
         "repo": ".emacs.d",
-        "rev": "f663837311a822431e0876d63787728d31c2141c",
+        "rev": "5f856b6b74d3554ff75a3591e740f14d1bcd8553",
         "type": "github"
       },
       "original": {
