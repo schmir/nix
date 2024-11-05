@@ -42,16 +42,11 @@ in
         lnav
         tealdeer
 
-        jujutsu
-        git
-        git-lfs
         ripgrep
         rlwrap
         file
         just
         nvd
-        mr
-        meld
 
         fzf
         entr
@@ -69,6 +64,7 @@ in
 
         zip
         unzip
+        dive
 
         graphviz
         # # Adds the 'hello' command to your environment. It prints a friendly

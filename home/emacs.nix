@@ -40,5 +40,7 @@ in
     nodePackages.prettier
     nodePackages.typescript-language-server
     ruff
+    shellcheck
+    shfmt
   ];
 }

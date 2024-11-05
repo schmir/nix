@@ -76,10 +76,12 @@
         };
       mostModules = [
         ./home/base.nix
+        ./home/clojure.nix
         ./home/emacs.nix
         ./home/golang.nix
-        ./home/clojure.nix
         ./home/most.nix
+        ./home/python.nix
+        ./home/vcs.nix
       ];
       allModules = (
         mostModules
@@ -99,8 +101,6 @@
         ]
       );
 
-      homeConfigurations."neso-empty" = mkHomeConfig "aarch64-darwin" false [ ./machine/neso.nix ];
-
       homeConfigurations."sao" = mkHomeConfig "x86_64-linux" false (
         [
           ./machine/cirrus.nix
@@ -117,8 +117,9 @@
           ./machine/cirrus.nix
           ./home/syncthing.nix
           ./home/lulu.nix
+          ./home/x11.nix
         ]
-        ++ allModules
+        ++ mostModules
       );
 
       homeConfigurations."galatea" = mkHomeConfig "x86_64-linux" false (
@@ -126,28 +127,14 @@
           ./machine/cirrus.nix
           ./home/syncthing.nix
           ./home/lulu.nix
+          ./home/x11.nix
         ]
-        ++ allModules
-      );
-
-      homeConfigurations."nixos" = mkHomeConfig "x86_64-linux" false (
-        [
-          ./machine/cirrus.nix
-          #          ./home/syncthing.nix
-        ]
-        ++ allModules
-      );
-
-      homeConfigurations."cirrus-empty" = mkHomeConfig "x86_64-linux" false [ ./machine/cirrus.nix ];
-
-      homeConfigurations."cirrus-nox" = mkHomeConfig "x86_64-linux" true (
-        [ ./machine/cirrus.nix ] ++ mostModules
+        ++ mostModules
       );
 
       homeConfigurations."arm" = mkHomeConfig "aarch64-linux" true (
         [ ./machine/cirrus.nix ] ++ allModules
       );
 
-      homeConfigurations."arm-empty" = mkHomeConfig "aarch64-linux" true [ ./machine/cirrus.nix ];
     };
 }

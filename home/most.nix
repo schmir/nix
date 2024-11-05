@@ -17,18 +17,6 @@
       circleci-cli
 
       cloc
-      pre-commit
-      nodejs
-      python3
-      uv
-
-      # git
-      git
-      tig
-      diffstat
-      difftastic
-      shellcheck
-      shfmt
 
       gpg240-pkgs.pass
       gpg240-pkgs.gnupg
