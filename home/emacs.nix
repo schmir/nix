@@ -42,5 +42,6 @@ in
     ruff
     shellcheck
     shfmt
+    ollama
   ];
 }
