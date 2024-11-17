@@ -36,6 +36,7 @@ in
     msmtp
     multimarkdown
     nil
+    nixd
     nodePackages.bash-language-server
     nodePackages.prettier
     nodePackages.typescript-language-server
