@@ -21,10 +21,9 @@ update-texlive:
 # Run home-manager switch
 home-manager:
     #! /bin/sh
-    hn=$(hostname -s)
     old_gen=$(readlink -f ~/.nix-profile)
     flake=${HOME}/repos/io.github.schmir/nix
     echo "=======> " home-manager switch -L --flake ${flake}#${hn}
-    home-manager switch -L --flake ${flake}#${hn}
+    home-manager switch -L --flake ${flake}
     new_gen=$(readlink -f ~/.nix-profile)
     nvd diff ${old_gen} ${new_gen}
