@@ -18,7 +18,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixfmt.url = "github:NixOS/nixfmt";
     schmir-emacs.url = "github:schmir/.emacs.d";
     webcam-filters = {
       url = "github:jashandeep-sohi/webcam-filters";
@@ -40,7 +39,6 @@
       gpg240-nixpkgs,
       home-manager,
       emacs-overlay,
-      nixfmt,
       schmir-emacs,
       nix-index,
       webcam-filters,

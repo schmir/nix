@@ -32,7 +32,7 @@ in
     hunspell
     hunspellDicts.de_DE
     hunspellDicts.en_US
-    inputs.nixfmt.packages.${system}.nixfmt
+    nixfmt-rfc-style
     msmtp
     multimarkdown
     nil
