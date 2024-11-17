@@ -1,35 +1,31 @@
 {
   config,
   pkgs,
-  nox,
   ...
 }:
 
 let
   shells =
-    if nox then
-      [ ]
-    else
-      with pkgs;
-      [
-        zsh
-        #zsh-completions
-        #nix-zsh-completions
-        #zsh-autosuggestions
-        fish
-        # direnv
-        # nix-direnv
-        zoxide
-        #starship
-      ]
-      ++ (
-        if pkgs.stdenv.isDarwin then
-          [
-            bash
-          ]
-        else
-          [ ]
-      );
+    with pkgs;
+    [
+      zsh
+      #zsh-completions
+      #nix-zsh-completions
+      #zsh-autosuggestions
+      fish
+      # direnv
+      # nix-direnv
+      zoxide
+      #starship
+    ]
+    ++ (
+      if pkgs.stdenv.isDarwin then
+        [
+          bash
+        ]
+      else
+        [ ]
+    );
 in
 {
   home.packages =

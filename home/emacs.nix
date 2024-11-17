@@ -1,17 +1,12 @@
 {
   config,
   pkgs,
-  nox,
   inputs,
   ...
 }:
 
 let
-  emacs =
-    if nox then
-      inputs.schmir-emacs.packages.${pkgs.system}.emacs-nox
-    else
-      inputs.schmir-emacs.packages.${pkgs.system}.default;
+  emacs = inputs.schmir-emacs.packages.${pkgs.system}.default;
 in
 {
   programs.emacs = {

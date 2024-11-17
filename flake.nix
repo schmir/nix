@@ -47,7 +47,7 @@
     }@inputs:
     let
       mkHomeConfig =
-        system: nox: modules:
+        system: modules:
         let
           overlays = [
             (import emacs-overlay)
@@ -66,7 +66,6 @@
             inherit
               inputs
               system
-              nox
               gpg240-pkgs
               pkgs-stable
               ;
@@ -90,7 +89,7 @@
       );
     in
     {
-      homeConfigurations."neso" = mkHomeConfig "aarch64-darwin" false (
+      homeConfigurations."neso" = mkHomeConfig "aarch64-darwin" (
         [ ./machine/neso.nix ]
         ++ mostModules
         ++ [
@@ -99,7 +98,7 @@
         ]
       );
 
-      homeConfigurations."sao" = mkHomeConfig "x86_64-linux" false (
+      homeConfigurations."sao" = mkHomeConfig "x86_64-linux" (
         [
           ./machine/cirrus.nix
           ./home/fonts.nix
@@ -110,7 +109,7 @@
         ++ allModules
       );
 
-      homeConfigurations."triton" = mkHomeConfig "x86_64-linux" false (
+      homeConfigurations."triton" = mkHomeConfig "x86_64-linux" (
         [
           ./machine/cirrus.nix
           ./home/syncthing.nix
@@ -120,7 +119,7 @@
         ++ mostModules
       );
 
-      homeConfigurations."galatea" = mkHomeConfig "x86_64-linux" false (
+      homeConfigurations."galatea" = mkHomeConfig "x86_64-linux" (
         [
           ./machine/cirrus.nix
           ./home/syncthing.nix
@@ -129,10 +128,5 @@
         ]
         ++ mostModules
       );
-
-      homeConfigurations."arm" = mkHomeConfig "aarch64-linux" true (
-        [ ./machine/cirrus.nix ] ++ allModules
-      );
-
     };
 }
