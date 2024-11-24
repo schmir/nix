@@ -11,6 +11,7 @@
     lnav
     tealdeer
 
+    comma
     ripgrep
     rlwrap
     file
