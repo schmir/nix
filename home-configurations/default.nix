@@ -5,7 +5,6 @@
   gpg240-nixpkgs,
   home-manager,
   emacs-overlay,
-  nixgl,
   system,
   ...
 }@inputs:
@@ -15,7 +14,6 @@ let
     let
       overlays = [
         (import emacs-overlay)
-        nixgl.overlay
       ];
       gpg240-pkgs = import gpg240-nixpkgs { inherit system overlays; };
       pkgs-stable = import nixpkgs-stable { inherit system overlays; };

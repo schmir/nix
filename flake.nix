@@ -21,15 +21,7 @@
     };
 
     schmir-emacs.url = "github:schmir/.emacs.d";
-    webcam-filters = {
-      url = "github:jashandeep-sohi/webcam-filters";
-      #url = "github:schmir/webcam-filters";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixgl = {
-      url = "github:nix-community/nixGL";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
     nix-index.url = "github:nix-community/nix-index";
     nix-index.inputs.nixpkgs.follows = "nixpkgs";
   };
