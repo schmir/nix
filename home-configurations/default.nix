@@ -44,18 +44,16 @@ let
     ./python.nix
     ./vcs.nix
     ./lulu.nix
-    ./x11.nix
     ./syncthing.nix
+    ./${system}.nix
   ];
   allModules = (
     mostModules
     ++ [
       ./texlive.nix
-      ./x11.nix
-      ./${system}.nix
     ]
   );
 in
 {
-  "ralf" = mkHomeConfig system allModules;
+  "ralf" = mkHomeConfig system mostModules;
 }
