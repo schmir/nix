@@ -8,6 +8,8 @@
     # Specify the source of Home Manager and Nixpkgs.
     #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
+
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,114 +21,25 @@
     };
 
     schmir-emacs.url = "github:schmir/.emacs.d";
-    webcam-filters = {
-      url = "github:jashandeep-sohi/webcam-filters";
-      #url = "github:schmir/webcam-filters";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixgl = {
-      url = "github:nix-community/nixGL";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
     nix-index.url = "github:nix-community/nix-index";
     nix-index.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
     {
-      nixpkgs,
-      nixpkgs-stable,
-      gpg240-nixpkgs,
-      home-manager,
-      emacs-overlay,
-      schmir-emacs,
-      nix-index,
-      webcam-filters,
-      nixgl,
+      flake-utils,
       ...
     }@inputs:
     let
-      mkHomeConfig =
-        system: modules:
-        let
-          overlays = [
-            (import emacs-overlay)
-            nixgl.overlay
-          ];
-          gpg240-pkgs = import gpg240-nixpkgs { inherit system overlays; };
-          pkgs-stable = import nixpkgs-stable { inherit system overlays; };
-        in
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            inherit system overlays;
-            config.allowUnfree = true;
-          };
-          modules = modules;
-          extraSpecialArgs = {
-            inherit
-              inputs
-              system
-              gpg240-pkgs
-              pkgs-stable
-              ;
-          };
-        };
-      mostModules = [
-        ./home/base.nix
-        ./home/clojure.nix
-        ./home/emacs.nix
-        ./home/golang.nix
-        ./home/most.nix
-        ./home/python.nix
-        ./home/vcs.nix
+      systems = [
+        "x86_64-linux"
+        "aarch64-darwin"
       ];
-      allModules = (
-        mostModules
-        ++ [
-          ./home/texlive.nix
-          ./home/x11.nix
-        ]
-      );
+
+      mkSystem = system: {
+        legacyPackages.homeConfigurations = import ./home-configurations (inputs // { inherit system; });
+      };
     in
-    {
-      homeConfigurations."neso" = mkHomeConfig "aarch64-darwin" (
-        [ ./machine/neso.nix ]
-        ++ mostModules
-        ++ [
-          ./home/texlive.nix
-          ./home/lulu.nix
-        ]
-      );
-
-      homeConfigurations."sao" = mkHomeConfig "x86_64-linux" (
-        [
-          ./machine/cirrus.nix
-          ./home/fonts.nix
-          # ./home/webcam.nix
-          ./home/syncthing.nix
-          ./home/lulu.nix
-        ]
-        ++ allModules
-      );
-
-      homeConfigurations."triton" = mkHomeConfig "x86_64-linux" (
-        [
-          ./machine/cirrus.nix
-          ./home/syncthing.nix
-          ./home/lulu.nix
-          ./home/x11.nix
-        ]
-        ++ mostModules
-      );
-
-      homeConfigurations."galatea" = mkHomeConfig "x86_64-linux" (
-        [
-          ./machine/cirrus.nix
-          ./home/syncthing.nix
-          ./home/lulu.nix
-          ./home/x11.nix
-        ]
-        ++ mostModules
-      );
-    };
+    flake-utils.lib.eachSystem systems mkSystem;
 }

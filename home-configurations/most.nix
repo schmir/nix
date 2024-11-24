@@ -26,6 +26,8 @@
 
       imagemagick
       img2pdf
+      pdftk
+      ghostscript_headless
 
       rclone
       restic

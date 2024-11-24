@@ -9,5 +9,6 @@
     xsel
     dmenu
     wl-clipboard
+    psmisc
   ];
 }
