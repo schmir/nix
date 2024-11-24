@@ -4,7 +4,6 @@
   nixpkgs-stable,
   gpg240-nixpkgs,
   home-manager,
-  emacs-overlay,
   system,
   ...
 }@inputs:
@@ -12,9 +11,9 @@ let
   mkHomeConfig =
     system: modules:
     let
-      overlays = [
-        (import emacs-overlay)
-      ];
+      overlays =
+        [
+        ];
       gpg240-pkgs = import gpg240-nixpkgs { inherit system overlays; };
       pkgs-stable = import nixpkgs-stable { inherit system overlays; };
     in
