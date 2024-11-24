@@ -4,7 +4,7 @@
   home.packages = with pkgs; [
     diffstat
     difftastic
-    git
+    gitFull
     git-lfs
     jujutsu
     meld
