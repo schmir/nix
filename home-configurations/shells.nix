@@ -15,7 +15,7 @@
       # direnv
       # nix-direnv
       zoxide
-      #starship
+      starship
     ]
     ++ (
       if pkgs.stdenv.isDarwin then
