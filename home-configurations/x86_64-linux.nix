@@ -10,5 +10,6 @@
     dmenu
     wl-clipboard
     psmisc
+    lnav
   ];
 }

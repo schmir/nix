@@ -8,7 +8,6 @@
   home.packages = with pkgs; [
     coreutils
     moreutils
-    lnav
     tealdeer
 
     comma
