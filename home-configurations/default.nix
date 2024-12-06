@@ -40,7 +40,6 @@ let
     ./emacs.nix
     ./golang.nix
     ./most.nix
-    ./python.nix
     ./vcs.nix
     ./lulu.nix
     ./syncthing.nix
