@@ -147,6 +147,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-oldstable": {
+      "locked": {
+        "lastModified": 1733730953,
+        "narHash": "sha256-dlK7n82FEyZlHH7BFHQAM5tua+lQO1Iv7aAtglc1O5s=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "7109b680d161993918b0a126f38bc39763e5a709",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-24.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1732824227,
@@ -202,6 +218,7 @@
         "home-manager": "home-manager",
         "nix-index": "nix-index",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-oldstable": "nixpkgs-oldstable",
         "nixpkgs-stable": "nixpkgs-stable",
         "schmir-emacs": "schmir-emacs"
       }

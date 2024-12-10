@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     gpg240-nixpkgs.url = "github:nixos/nixpkgs?rev=5a8650469a9f8a1958ff9373bd27fb8e54c4365d";
+    nixpkgs-oldstable.url = "github:nixos/nixpkgs/nixos-24.05";
 
     # Specify the source of Home Manager and Nixpkgs.
     #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";

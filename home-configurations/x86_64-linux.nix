@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgs-oldstable,
   ...
 }:
 {
@@ -11,5 +12,6 @@
     wl-clipboard
     psmisc
     lnav
+    pkgs-oldstable.docker
   ];
 }
