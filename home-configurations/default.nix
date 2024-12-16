@@ -2,7 +2,6 @@
   self,
   nixpkgs,
   nixpkgs-stable,
-  nixpkgs-oldstable,
   gpg240-nixpkgs,
   home-manager,
   system,
@@ -12,12 +11,10 @@ let
   mkHomeConfig =
     system: modules:
     let
-      overlays =
-        [
-        ];
+      overlays = [
+      ];
       gpg240-pkgs = import gpg240-nixpkgs { inherit system overlays; };
       pkgs-stable = import nixpkgs-stable { inherit system overlays; };
-      pkgs-oldstable = import nixpkgs-oldstable { inherit system overlays; };
     in
     home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs {
@@ -31,7 +28,6 @@ let
           system
           gpg240-pkgs
           pkgs-stable
-          pkgs-oldstable
           ;
       };
     };
