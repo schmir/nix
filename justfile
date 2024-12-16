@@ -27,3 +27,9 @@ home-manager:
     home-manager switch -L --flake ${flake}
     new_gen=$(readlink -f ~/.nix-profile)
     nvd diff ${old_gen} ${new_gen}
+
+nixos-rebuild:
+    sudo nixos-rebuild switch -L --flake .
+
+nix-store-gc:
+    nix-store --gc
