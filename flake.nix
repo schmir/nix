@@ -2,7 +2,8 @@
   description = "Home Manager configuration of ralf";
 
   inputs = {
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
     gpg240-nixpkgs.url = "github:nixos/nixpkgs?rev=5a8650469a9f8a1958ff9373bd27fb8e54c4365d";
     nixpkgs-oldstable.url = "github:nixos/nixpkgs/nixos-24.05";
 
@@ -24,7 +25,10 @@
 
   outputs =
     {
+      self,
       flake-utils,
+      nixpkgs-stable,
+      nix-flatpak,
       ...
     }@inputs:
     let
@@ -37,5 +41,38 @@
         legacyPackages.homeConfigurations = import ./home-configurations (inputs // { inherit system; });
       };
     in
-    flake-utils.lib.eachSystem systems mkSystem;
+    flake-utils.lib.eachSystem systems mkSystem
+    // {
+      nixosConfigurations.sao = nixpkgs-stable.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+          hostname = "sao";
+        };
+        modules = [
+          ./configuration.nix
+        ];
+      };
+
+      nixosConfigurations.triton = nixpkgs-stable.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+          hostname = "triton";
+        };
+        modules = [
+          ./configuration.nix
+        ];
+      };
+      nixosConfigurations.galatea = nixpkgs-stable.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+          hostname = "galatea";
+        };
+        modules = [
+          ./configuration.nix
+        ];
+      };
+    };
 }
