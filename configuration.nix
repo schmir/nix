@@ -186,19 +186,21 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    coreutils
-    moreutils
-    distrobox
-    emacs
-    # zsh-completions
     # nix-zsh-completions
     # zsh-autosuggestions
+    # zsh-completions
+    coreutils
     direnv
-    nix-direnv
-    zoxide
-    wirelesstools
+    distrobox
+    emacs
     git
+    moreutils
+    nix-direnv
+    virt-viewer
     wezterm
+    wirelesstools
+    xfsprogs
+    zoxide
   ];
 
   environment.gnome.excludePackages = [ pkgs.simple-scan ];
