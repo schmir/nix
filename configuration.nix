@@ -190,6 +190,7 @@
     # zsh-autosuggestions
     # zsh-completions
     btop
+    compsize
     coreutils
     direnv
     distrobox
