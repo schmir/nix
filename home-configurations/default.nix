@@ -2,7 +2,6 @@
   self,
   nixpkgs,
   nixpkgs-stable,
-  gpg240-nixpkgs,
   home-manager,
   system,
   ...
@@ -13,7 +12,6 @@ let
     let
       overlays = [
       ];
-      gpg240-pkgs = import gpg240-nixpkgs { inherit system overlays; };
       pkgs-stable = import nixpkgs-stable { inherit system overlays; };
     in
     home-manager.lib.homeManagerConfiguration {
@@ -26,7 +24,6 @@ let
         inherit
           inputs
           system
-          gpg240-pkgs
           pkgs-stable
           ;
       };

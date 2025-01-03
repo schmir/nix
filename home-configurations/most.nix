@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  gpg240-pkgs,
   inputs,
   ...
 }:
@@ -18,8 +17,8 @@
 
       cloc
 
-      gpg240-pkgs.pass
-      gpg240-pkgs.gnupg
+      pass
+      gnupg
       apg
       pwgen
       yadm

@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  gpg240-pkgs,
   ...
 }:
 let
