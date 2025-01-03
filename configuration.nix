@@ -189,6 +189,7 @@
     # nix-zsh-completions
     # zsh-autosuggestions
     # zsh-completions
+    btop
     coreutils
     direnv
     distrobox
