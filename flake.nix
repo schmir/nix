@@ -63,6 +63,17 @@
           ./configuration.nix
         ];
       };
+      nixosConfigurations.halimede = nixpkgs-stable.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+          hostname = "halimede";
+        };
+        modules = [
+          ./configuration.nix
+        ];
+      };
+
       nixosConfigurations.galatea = nixpkgs-stable.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
