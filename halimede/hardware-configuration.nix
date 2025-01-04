@@ -98,7 +98,9 @@
     #options = [ "fmask=0022" "dmask=0022" ];
   };
 
-  swapDevices = [ ];
+  swapDevices = [
+    { device = "/dev/disk/by-uuid/15f41c50-25e6-4241-8d26-13c5dd2c57d9"; }
+  ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
