@@ -35,6 +35,12 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
+  # Prevent black screen when waking up from suspend, see
+  # https://gitlab.freedesktop.org/drm/amd/-/issues/3580 and
+  # https://bugzilla.kernel.org/show_bug.cgi?id=219514
+  powerManagement.powerDownCommands = "${pkgs.util-linux}/bin/rfkill block bluetooth";
+  powerManagement.resumeCommands = "${pkgs.util-linux}/bin/rfkill unblock bluetooth";
+
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/08f493eb-74aa-416c-980c-4d050440386e";
     fsType = "btrfs";
