@@ -13,6 +13,7 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
+  virtualisation.docker.storageDriver = "btrfs";
 
   boot.initrd.luks.devices = {
     root = {
