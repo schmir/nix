@@ -19,6 +19,8 @@
 
     nix-index.url = "github:nix-community/nix-index";
     nix-index.inputs.nixpkgs.follows = "nixpkgs";
+
+    my-fonts.url = "git+ssh://git@github.com/schmir/fonts.git?ref=main";
   };
 
   outputs =
@@ -27,6 +29,7 @@
       flake-utils,
       nixpkgs-stable,
       nix-flatpak,
+      my-fonts,
       ...
     }@inputs:
     let

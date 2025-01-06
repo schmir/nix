@@ -11,6 +11,7 @@ let
     system: modules:
     let
       overlays = [
+        inputs.my-fonts.overlays.default
       ];
       pkgs-stable = import nixpkgs-stable { inherit system overlays; };
     in

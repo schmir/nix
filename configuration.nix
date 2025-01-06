@@ -16,7 +16,7 @@
     # Include the results of the hardware scan.
     ./${hostname}/hardware-configuration.nix
   ];
-  #nixpkgs.overlays = [ inputs.nix.overlays.default ];
+  nixpkgs.overlays = [ inputs.my-fonts.overlays.default ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false;
@@ -260,6 +260,7 @@
       noto-fonts-cjk-sans
       noto-fonts-emoji
       ubuntu_font_family
+      berkeley-mono-nerd-font
     ];
   };
 
