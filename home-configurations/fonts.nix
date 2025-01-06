@@ -9,5 +9,7 @@
     hack-font
     jetbrains-mono
     liberation_ttf
+    berkeley-mono-nerd-font
+    comic-code-font
   ];
 }

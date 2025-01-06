@@ -118,11 +118,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1736182680,
-        "narHash": "sha256-xUQXzVUMu6HPYedBR2RFHOldZzEM/JKRCIfvy6nJy/I=",
+        "lastModified": 1736202475,
+        "narHash": "sha256-FmJaRLmkSa+iMN5u0RLBQKVa1XeHW1rU8BGdPtgyUeM=",
         "ref": "main",
-        "rev": "6a7ebea4041efa42f1f5975b524b90706e3b0f94",
-        "revCount": 3,
+        "rev": "f52b915150a180537ba9ccbc034a521af6f80221",
+        "revCount": 4,
         "type": "git",
         "url": "ssh://git@github.com/schmir/fonts.git"
       },
