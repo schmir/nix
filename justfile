@@ -28,7 +28,10 @@ home-manager:
     new_gen=$(readlink -f ~/.nix-profile)
     nvd diff ${old_gen} ${new_gen}
 
-nixos-rebuild:
+nixos-build:
+    nixos-rebuild build -L --flake .
+
+nixos-switch: nixos-build
     sudo nixos-rebuild switch -L --flake .
 
 nix-store-gc:
