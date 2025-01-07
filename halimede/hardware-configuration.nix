@@ -52,6 +52,22 @@
     ];
   };
 
+  fileSystems."/mnt/upp/services" = {
+    device = "/home/ralf/repos/upp/services";
+    options = [
+      "bind"
+      "X-mount.idmap=u:1000:1001:1 g:100:1001:1"
+    ];
+  };
+
+  fileSystems."/mnt/upp/frontends" = {
+    device = "/home/ralf/repos/upp/frontends";
+    options = [
+      "bind"
+      "X-mount.idmap=u:1000:1001:1 g:100:1001:1"
+    ];
+  };
+
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/08f493eb-74aa-416c-980c-4d050440386e";
     fsType = "btrfs";
