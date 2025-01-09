@@ -21,6 +21,8 @@
     nix-index.inputs.nixpkgs.follows = "nixpkgs";
 
     my-fonts.url = "git+ssh://git@github.com/schmir/fonts.git?ref=main";
+    my-fonts.inputs.nixpkgs.follows = "nixpkgs";
+
   };
 
   outputs =
