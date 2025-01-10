@@ -42,7 +42,9 @@ let
     ./lulu.nix
     ./syncthing.nix
     ./${system}.nix
+    ./dconf.nix
   ];
+
   allModules = (
     mostModules
     ++ [
