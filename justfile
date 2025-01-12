@@ -37,5 +37,8 @@ nixos-switch: nixos-build
 nixos-test: nixos-build
     sudo nixos-rebuild test -L --flake .
 
+nixos-dry-activate:
+    sudo nixos-rebuild dry-activate -L --flake .
+
 nix-store-gc:
     nix-store --gc
