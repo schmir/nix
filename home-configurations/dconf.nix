@@ -43,5 +43,8 @@
     "org/gnome/desktop/peripherals/mouse" = {
       natural-scroll = false;
     };
+    "ca/desrt/dconf-editor" = {
+      show-warning = false;
+    };
   };
 }

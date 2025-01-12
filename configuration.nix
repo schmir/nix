@@ -104,6 +104,7 @@
     "hu.irl.cameractrls"
     "org.torproject.torbrowser-launcher"
     "org.gnome.SimpleScan"
+    "ca.desrt.dconf-editor"
   ];
   nix.settings.experimental-features = [
     "nix-command"
