@@ -2,13 +2,15 @@
   description = "Home Manager configuration of ralf";
 
   inputs = {
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+    sync.url = "github:schmir/sync-flake";
+    nixpkgs-stable.follows = "sync/nixpkgs-stable";
+    nixpkgs.follows = "sync/nixpkgs";
+    flake-utils.follows = "sync/flake-utils";
+
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
     # Specify the source of Home Manager and Nixpkgs.
     #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
 
     home-manager = {
       url = "github:nix-community/home-manager";
