@@ -15,6 +15,15 @@
   ];
   virtualisation.docker.storageDriver = "btrfs";
 
+  # See https://bbs.archlinux.org/viewtopic.php?pid=2003004#p2003004
+  boot.kernelParams = [
+    "amdgpu.noretry=0"
+    "amdgpu.lockup_timeout=1000"
+    "amdgpu.gpu_recovery=1"
+    "amdgpu.audio=0"
+    "pcie_aspm=off"
+  ];
+  hardware.enableAllFirmware = true;
   boot.initrd.luks.devices = {
     root = {
       device = "/dev/disk/by-uuid/af12f7f0-c102-4315-b02b-cdc9d592d549";
@@ -33,7 +42,10 @@
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ "dm-snapshot" ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [
+    "kvm-amd"
+    "amdgpu"
+  ];
   boot.extraModulePackages = [ ];
 
   # Prevent black screen when waking up from suspend, see

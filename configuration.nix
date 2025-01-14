@@ -29,6 +29,11 @@
     "kernel.dmesg_restrict" = false;
   };
 
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
