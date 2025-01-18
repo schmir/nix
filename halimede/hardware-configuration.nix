@@ -127,6 +127,11 @@
     #options = [ "fmask=0022" "dmask=0022" ];
   };
 
+  fileSystems."/var/lib/libvirt/images" = {
+    device = "/dev/disk/by-uuid/d3463b03-9b0f-4fa7-a6ec-d8de6d241d3f";
+    fsType = "xfs";
+  };
+
   swapDevices = [
     { device = "/dev/disk/by-uuid/15f41c50-25e6-4241-8d26-13c5dd2c57d9"; }
   ];
