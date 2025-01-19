@@ -10,8 +10,8 @@
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
-    # Specify the source of Home Manager and Nixpkgs.
-    #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "sync/nixpkgs";
 
     schmir-emacs.url = "github:schmir/.emacs.d";
 
@@ -30,6 +30,7 @@
       nixpkgs-stable,
       nix-flatpak,
       my-fonts,
+      nix-darwin,
       ...
     }@inputs:
     let
@@ -41,6 +42,75 @@
       mkSystem = system: {
         legacyPackages.homeConfigurations = import ./home-configurations (inputs // { inherit system; });
       };
+      darwin-configuration =
+        { pkgs, ... }:
+        {
+          # List packages installed in system profile. To search by name, run:
+          # $ nix-env -qaP | grep wget
+          environment.systemPackages = [
+          ];
+
+          # Necessary for using flakes on this system.
+          nix.settings.experimental-features = "nix-command flakes";
+
+          # Enable alternative shell support in nix-darwin.
+          # programs.fish.enable = true;
+
+          # Set Git commit hash for darwin-version.
+          system.configurationRevision = self.rev or self.dirtyRev or null;
+
+          # Used for backwards compatibility, please read the changelog before changing.
+          # $ darwin-rebuild changelog
+          system.stateVersion = 5;
+
+          # The platform the configuration will be used on.
+          nixpkgs.hostPlatform = "aarch64-darwin";
+
+          homebrew = {
+            enable = true;
+            onActivation = {
+              autoUpdate = true;
+              upgrade = true;
+              cleanup = "zap";
+              extraFlags = [ "--verbose" ];
+            };
+
+            taps = [ ];
+            brews = [ ];
+            casks = [
+              "firefox"
+              "google-chrome"
+              # "mattermost"
+              "orbstack"
+              "tor-browser"
+              "utm"
+            ];
+          };
+          system.defaults.NSGlobalDomain = {
+            # keyboard navigation in dialogs
+            AppleKeyboardUIMode = 3;
+
+            # disable press-and-hold for keys in favor of key repeat
+            ApplePressAndHoldEnabled = false;
+
+            # fast key repeat rate when hold
+            KeyRepeat = 1;
+            InitialKeyRepeat = 15;
+          };
+          programs.zsh.enable = true;
+          system.defaults.dock.wvous-tl-corner = 2;
+          system.defaults.dock.show-recents = false;
+          system.defaults.dock.orientation = "left";
+          system.defaults.finder.ShowPathbar = true;
+          security.pam.enableSudoTouchIdAuth = true;
+          system.defaults.finder.QuitMenuItem = true;
+          system.defaults.finder.ShowStatusBar = true;
+          system.defaults.finder._FXShowPosixPathInTitle = true;
+          system.defaults.finder._FXSortFoldersFirst = true;
+          system.defaults.loginwindow.GuestEnabled = false;
+          system.defaults.menuExtraClock.Show24Hour = true;
+        };
+
     in
     flake-utils.lib.eachSystem systems mkSystem
     // {
@@ -85,6 +155,11 @@
         modules = [
           ./configuration.nix
         ];
+      };
+      # Build darwin flake using:
+      # $ darwin-rebuild build --flake .#neso
+      darwinConfigurations."neso" = nix-darwin.lib.darwinSystem {
+        modules = [ darwin-configuration ];
       };
     };
 }
