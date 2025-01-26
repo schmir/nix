@@ -205,6 +205,7 @@
     git
     moreutils
     nix-direnv
+    tarsnap
     virt-viewer
     wezterm
     wirelesstools
