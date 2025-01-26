@@ -28,6 +28,7 @@
     root = {
       device = "/dev/disk/by-uuid/af12f7f0-c102-4315-b02b-cdc9d592d549";
       preLVM = true;
+      allowDiscards = true;
     };
   };
   boot.kernelPackages = pkgs.linuxPackages_latest;
