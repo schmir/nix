@@ -203,6 +203,7 @@
     distrobox
     emacs
     git
+    iotop
     moreutils
     nix-direnv
     tarsnap
