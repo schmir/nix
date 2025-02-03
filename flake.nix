@@ -66,7 +66,7 @@
 
           # The platform the configuration will be used on.
           nixpkgs.hostPlatform = "aarch64-darwin";
-
+          ids.gids.nixbld = 30000;
           homebrew = {
             enable = true;
             onActivation = {
@@ -85,6 +85,7 @@
               "slack"
               "tor-browser"
               "utm"
+              "openmtp"
             ];
           };
           system.defaults.NSGlobalDomain = {
@@ -101,9 +102,9 @@
           programs.zsh.enable = true;
           system.defaults.dock.wvous-tl-corner = 2;
           system.defaults.dock.show-recents = false;
-          system.defaults.dock.orientation = "left";
+          system.defaults.dock.orientation = "bottom";
           system.defaults.finder.ShowPathbar = true;
-          security.pam.enableSudoTouchIdAuth = true;
+          security.pam.services.sudo_local.touchIdAuth = true;
           system.defaults.finder.QuitMenuItem = true;
           system.defaults.finder.ShowStatusBar = true;
           system.defaults.finder._FXShowPosixPathInTitle = true;
