@@ -2,21 +2,13 @@
 default:
     just --list
 
-# Update everything but texlive
-update: update-emacs update-nixpkgs
+# Update everything
+update:
+    nix flake update
 
 # Update emacs
 update-emacs:
-    nix flake lock --update-input schmir-emacs
-
-# Update to latest nixpkgs-unstable
-update-nixpkgs:
-    nix flake lock --update-input nixpkgs
-    nix flake lock --update-input home-manager
-
-# Update texlive by updating nixpkgs-stable
-update-texlive:
-    nix flake lock --update-input nixpkgs-stable
+    nix flake update schmir-emacs
 
 # Run home-manager switch
 home-manager:
