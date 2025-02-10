@@ -133,6 +133,11 @@
     fsType = "xfs";
   };
 
+  fileSystems."/scratch" = {
+    device = "/dev/disk/by-uuid/a3bb9b1e-3e85-4138-9443-c96dcf2d67f6";
+    fsType = "xfs";
+  };
+
   swapDevices = [
     { device = "/dev/disk/by-uuid/15f41c50-25e6-4241-8d26-13c5dd2c57d9"; }
   ];
