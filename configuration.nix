@@ -103,13 +103,14 @@
 
   services.flatpak.enable = true;
   services.flatpak.packages = [
-    "com.google.Chrome"
-    "org.mozilla.firefox"
-    "com.mattermost.Desktop"
-    "hu.irl.cameractrls"
-    "org.torproject.torbrowser-launcher"
-    "org.gnome.SimpleScan"
     "ca.desrt.dconf-editor"
+    "com.google.Chrome"
+    "com.mattermost.Desktop"
+    "com.slack.Slack"
+    "hu.irl.cameractrls"
+    "org.gnome.SimpleScan"
+    "org.mozilla.firefox"
+    "org.torproject.torbrowser-launcher"
   ];
   nix.settings.experimental-features = [
     "nix-command"
