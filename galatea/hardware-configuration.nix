@@ -14,7 +14,8 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.luks.devices."luks-b74f1f8f-d46a-4d10-9bf3-c10fab4a97fb".device = "/dev/disk/by-uuid/b74f1f8f-d46a-4d10-9bf3-c10fab4a97fb";
+  boot.initrd.luks.devices."luks-b74f1f8f-d46a-4d10-9bf3-c10fab4a97fb".device =
+    "/dev/disk/by-uuid/b74f1f8f-d46a-4d10-9bf3-c10fab4a97fb";
 
   boot.initrd.availableKernelModules = [
     "nvme"
@@ -56,7 +57,8 @@
     fsType = "ext4";
   };
 
-  boot.initrd.luks.devices."luks-9d431816-7f0f-4e40-8f74-242a24ceadbc".device = "/dev/disk/by-uuid/9d431816-7f0f-4e40-8f74-242a24ceadbc";
+  boot.initrd.luks.devices."luks-9d431816-7f0f-4e40-8f74-242a24ceadbc".device =
+    "/dev/disk/by-uuid/9d431816-7f0f-4e40-8f74-242a24ceadbc";
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/60FB-D6E0";
@@ -67,16 +69,8 @@
     ];
   };
 
-  fileSystems."/mnt/upp/services" = {
-    device = "/home/ralf/repos/upp/services";
-    options = [
-      "bind"
-      "X-mount.idmap=u:1000:1001:1 g:100:1001:1"
-    ];
-  };
-
-  fileSystems."/mnt/upp/frontends" = {
-    device = "/home/ralf/repos/upp/frontends";
+  fileSystems."/mnt/repos" = {
+    device = "/home/ralf/repos";
     options = [
       "bind"
       "X-mount.idmap=u:1000:1001:1 g:100:1001:1"
