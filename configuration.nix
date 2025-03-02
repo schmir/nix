@@ -107,6 +107,7 @@
     "com.google.Chrome"
     "com.mattermost.Desktop"
     "com.slack.Slack"
+    "com.spotify.Client"
     "hu.irl.cameractrls"
     "org.gnome.SimpleScan"
     "org.mozilla.firefox"
