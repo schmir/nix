@@ -65,16 +65,8 @@
     ];
   };
 
-  fileSystems."/mnt/upp/services" = {
-    device = "/home/ralf/repos/upp/services";
-    options = [
-      "bind"
-      "X-mount.idmap=u:1000:1001:1 g:100:1001:1"
-    ];
-  };
-
-  fileSystems."/mnt/upp/frontends" = {
-    device = "/home/ralf/repos/upp/frontends";
+  fileSystems."/mnt/repos" = {
+    device = "/home/ralf/repos";
     options = [
       "bind"
       "X-mount.idmap=u:1000:1001:1 g:100:1001:1"
