@@ -81,8 +81,8 @@
             casks = [
               "firefox"
               "google-chrome"
-              # "mattermost"
               "orbstack"
+              "slack"
               "tor-browser"
               "utm"
             ];

@@ -105,7 +105,6 @@
   services.flatpak.packages = [
     "ca.desrt.dconf-editor"
     "com.google.Chrome"
-    "com.mattermost.Desktop"
     "com.slack.Slack"
     "com.spotify.Client"
     "hu.irl.cameractrls"
