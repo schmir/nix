@@ -5,6 +5,8 @@
 }:
 {
   home.packages = with pkgs; [
+    colima
+    docker-client
     cascadia-code
     dejavu_fonts
     fantasque-sans-mono
