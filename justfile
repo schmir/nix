@@ -20,17 +20,27 @@ home-manager:
     new_gen=$(readlink -f ~/.nix-profile)
     nvd diff ${old_gen} ${new_gen}
 
+# Run nixos-rebuild build
 nixos-build:
     nixos-rebuild build -L --flake .
 
+# Run nixos-rebuild switch
 nixos-switch: nixos-build
     sudo nixos-rebuild switch -L --flake .
 
+# Run nixos-rebuild test
 nixos-test: nixos-build
     sudo nixos-rebuild test -L --flake .
 
+# Run nixos-rebuild dry-activate
 nixos-dry-activate:
     sudo nixos-rebuild dry-activate -L --flake .
 
+# Collect nix store garbage
 nix-store-gc:
     nix-store --gc
+
+# Run nix-darwin switch
+nix-darwin-switch:
+    nix run nix-darwin -- switch --flake .
+
