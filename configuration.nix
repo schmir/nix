@@ -108,6 +108,7 @@
     "com.slack.Slack"
     "com.spotify.Client"
     "hu.irl.cameractrls"
+    "io.github.ungoogled_software.ungoogled_chromium"
     "org.gnome.SimpleScan"
     "org.mozilla.firefox"
     "org.torproject.torbrowser-launcher"

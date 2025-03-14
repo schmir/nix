@@ -79,6 +79,7 @@
             taps = [ ];
             brews = [ ];
             casks = [
+              "eloston-chromium"
               "firefox"
               "google-chrome"
               "slack"
