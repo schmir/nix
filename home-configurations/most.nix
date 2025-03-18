@@ -16,6 +16,7 @@
       circleci-cli
 
       cloc
+      treefmt
 
       pass
       gnupg
