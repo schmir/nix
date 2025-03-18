@@ -14,7 +14,23 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
   virtualisation.docker.storageDriver = "btrfs";
-
+  virtualisation.docker.daemon.settings = {
+    features = {
+      containerd-snapshotter = true;
+    };
+  };
+  boot.binfmt.emulatedSystems = [
+    "aarch64-linux"
+    "armv6l-linux"
+    "armv7l-linux"
+  ];
+  boot.binfmt.preferStaticEmulators = true;
+  boot.binfmt.registrations.aarch64-linux = {
+    fixBinary = true;
+    matchCredentials = true;
+    wrapInterpreterInShell = false;
+  };
+  #boot.binfmt.matchCredentials = true;
   # See https://bbs.archlinux.org/viewtopic.php?pid=2003004#p2003004
   boot.kernelParams = [
     "amdgpu.noretry=0"
