@@ -95,4 +95,24 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  virtualisation.docker.daemon.settings = {
+    features = {
+      containerd-snapshotter = true;
+    };
+  };
+
+  boot.binfmt = {
+    emulatedSystems = [
+      "aarch64-linux"
+      "armv6l-linux"
+      "armv7l-linux"
+    ];
+    preferStaticEmulators = true;
+    registrations.aarch64-linux = {
+      fixBinary = true;
+      matchCredentials = true;
+      wrapInterpreterInShell = false;
+    };
+  };
 }
