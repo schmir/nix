@@ -17,7 +17,7 @@
 
       cloc
       treefmt
-
+      taplo
       pass
       gnupg
       apg
