@@ -7,6 +7,7 @@
     gitFull
     git-lfs
     jujutsu
+    lefthook
     meld
     mr
     # nodejs
