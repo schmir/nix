@@ -35,6 +35,7 @@ in
     nodePackages.bash-language-server
     nodePackages.prettier
     nodePackages.typescript-language-server
+    pyright
     ruff
     shellcheck
     shfmt
