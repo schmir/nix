@@ -23,7 +23,7 @@ in
     clojure-lsp
     dockerfile-language-server-nodejs
     dprint
-    emacs-lsp-booster
+    #emacs-lsp-booster
     hunspell
     hunspellDicts.de_DE
     hunspellDicts.en_US
