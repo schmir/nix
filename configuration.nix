@@ -81,7 +81,7 @@
   services.fwupd.enable = true;
   services.fprintd.enable = true;
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -266,7 +266,7 @@
       hack-font
       jetbrains-mono
       liberation_ttf
-      nerdfonts
+      #nerdfonts
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-emoji
