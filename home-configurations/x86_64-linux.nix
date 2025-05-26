@@ -11,5 +11,6 @@
     wl-clipboard
     psmisc
     lnav
+    diffpdf
   ];
 }
