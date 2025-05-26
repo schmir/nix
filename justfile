@@ -42,5 +42,5 @@ nix-store-gc:
 
 # Run nix-darwin switch
 nix-darwin-switch:
-    nix run nix-darwin -- switch --flake .
+    sudo nix run nix-darwin -- switch --flake .
 
