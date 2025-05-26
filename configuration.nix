@@ -107,6 +107,7 @@
     "com.google.Chrome"
     "com.slack.Slack"
     "com.spotify.Client"
+    "com.vivaldi.Vivaldi"
     "hu.irl.cameractrls"
     "io.github.ungoogled_software.ungoogled_chromium"
     "org.gnome.SimpleScan"
