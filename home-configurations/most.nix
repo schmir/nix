@@ -9,6 +9,8 @@
   home.packages =
     with pkgs;
     [
+      diffpdf
+
       # build tools
       gnumake
       ninja
