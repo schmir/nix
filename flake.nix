@@ -86,6 +86,7 @@
               "slack"
               "tor-browser"
               "utm"
+              "vivaldi"
               "openmtp"
             ];
           };
