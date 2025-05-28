@@ -35,7 +35,7 @@
   powerManagement.powerDownCommands = "${pkgs.kmod}/bin/rmmod ath11k_pci";
   powerManagement.resumeCommands = "${pkgs.kmod}/bin/modprobe ath11k_pci";
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # boot.kernelPackages = pkgs.linuxPackagesFor (
   #   pkgs.linux_6_10.override {
