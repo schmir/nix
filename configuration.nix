@@ -205,6 +205,8 @@
     distrobox
     emacs
     git
+    gparted
+    hdparm
     iotop
     moreutils
     nix-direnv
