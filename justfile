@@ -44,3 +44,6 @@ nix-store-gc:
 nix-darwin-switch:
     sudo nix run nix-darwin -- switch --flake .
 
+# Collect garbage older than 60d
+gc:
+    sudo nix-collect-garbage --delete-older-than 60d
