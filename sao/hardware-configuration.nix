@@ -13,7 +13,7 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.availableKernelModules = [
     "xhci_pci"
     "ahci"
@@ -30,7 +30,8 @@
     fsType = "ext4";
   };
 
-  boot.initrd.luks.devices."luks-9d18830f-915d-4068-8df8-cebdb0fb1a97".device = "/dev/disk/by-uuid/9d18830f-915d-4068-8df8-cebdb0fb1a97";
+  boot.initrd.luks.devices."luks-9d18830f-915d-4068-8df8-cebdb0fb1a97".device =
+    "/dev/disk/by-uuid/9d18830f-915d-4068-8df8-cebdb0fb1a97";
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/9F5D-789F";
