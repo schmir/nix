@@ -6,6 +6,7 @@
 
 {
   home.packages = with pkgs; [
+    ast-grep
     coreutils
     moreutils
     tealdeer
