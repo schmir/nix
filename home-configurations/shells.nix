@@ -8,6 +8,7 @@
     with pkgs;
     [
       zsh
+      atuin
       #zsh-completions
       #nix-zsh-completions
       #zsh-autosuggestions
