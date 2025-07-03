@@ -13,6 +13,24 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
+  #virtualisation.docker.storageDriver = "btrfs";
+  virtualisation.docker.daemon.settings = {
+    features = {
+      containerd-snapshotter = true;
+    };
+  };
+  boot.binfmt.emulatedSystems = [
+    "aarch64-linux"
+    "armv6l-linux"
+    "armv7l-linux"
+  ];
+  boot.binfmt.preferStaticEmulators = true;
+  boot.binfmt.registrations.aarch64-linux = {
+    fixBinary = true;
+    matchCredentials = true;
+    wrapInterpreterInShell = false;
+  };
+
   #boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.availableKernelModules = [
     "xhci_pci"
