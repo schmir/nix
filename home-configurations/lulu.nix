@@ -17,5 +17,6 @@ in
     hadolint
     kubectl
     kubectx
+    pulumi
   ];
 }
