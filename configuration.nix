@@ -192,6 +192,9 @@
     xorg.libXi
   ];
 
+  # Fix VPN, see https://github.com/NixOS/nixpkgs/issues/375352#issue-2800029311
+  environment.etc."strongswan.conf".text = "";
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
