@@ -37,6 +37,7 @@ let
     ./emacs.nix
     ./golang.nix
     ./most.nix
+    ./tls.nix
     #    ./python.nix
     ./vcs.nix
     ./lulu.nix
