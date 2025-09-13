@@ -14,6 +14,8 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
+  security.pki.certificates = [ (builtins.readFile ./rootCA.pem) ];
+
   boot.initrd.luks.devices."luks-b74f1f8f-d46a-4d10-9bf3-c10fab4a97fb".device =
     "/dev/disk/by-uuid/b74f1f8f-d46a-4d10-9bf3-c10fab4a97fb";
 
