@@ -15,6 +15,11 @@
   ];
 
   security.pki.certificates = [ (builtins.readFile ./rootCA.pem) ];
+  networking.hosts = {
+    "127.0.0.3" = [
+      "ssl-proxy"
+    ];
+  };
 
   boot.initrd.luks.devices."luks-b74f1f8f-d46a-4d10-9bf3-c10fab4a97fb".device =
     "/dev/disk/by-uuid/b74f1f8f-d46a-4d10-9bf3-c10fab4a97fb";
