@@ -18,10 +18,16 @@
       cloc
       treefmt
       taplo
-      pass
-      gnupg
+
+      age
+      age-plugin-yubikey
       apg
+      gnupg
+      pass
+      passage
       pwgen
+      rage
+
       yadm
 
       imagemagick
