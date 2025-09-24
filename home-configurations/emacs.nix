@@ -21,7 +21,7 @@ in
 
   home.packages = with pkgs; [
     clojure-lsp
-    dockerfile-language-server-nodejs
+    dockerfile-language-server
     dprint
     #emacs-lsp-booster
     hunspell
