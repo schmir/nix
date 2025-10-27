@@ -23,7 +23,6 @@
       age-plugin-yubikey
       apg
       gnupg
-      pass
       passage
       pwgen
       rage
