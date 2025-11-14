@@ -60,6 +60,14 @@
     ];
   };
 
+  fileSystems."/mnt/repos" = {
+    device = "/home/ralf/repos";
+    options = [
+      "bind"
+      "X-mount.idmap=u:1000:1001:1 g:100:1001:1"
+    ];
+  };
+
   swapDevices = [
     { device = "/dev/disk/by-uuid/9eaca792-e4f9-4f9a-ac29-f4e98f241c2c"; }
   ];
