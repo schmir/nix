@@ -6,7 +6,7 @@
 }:
 
 let
-  emacs = inputs.schmir-emacs.packages.${pkgs.system}.default;
+  emacs = inputs.schmir-emacs.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
   programs.emacs = {
@@ -40,6 +40,6 @@ in
     ruff
     shellcheck
     shfmt
-    ollama
+    #ollama
   ];
 }
