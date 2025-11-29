@@ -14,8 +14,8 @@ update-emacs:
 home-manager:
     #! /bin/sh
     old_gen=$(readlink -f ~/.nix-profile)
-    flake=${HOME}/repos/io.github.schmir/nix
-    echo "=======> " home-manager switch -L --flake ${flake}#${hn}
+    flake=$(pwd)
+    echo "=======> " home-manager switch -L --flake ${flake}
     home-manager switch -L --flake ${flake}
     new_gen=$(readlink -f ~/.nix-profile)
     nvd diff ${old_gen} ${new_gen}
