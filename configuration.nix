@@ -66,8 +66,8 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -245,13 +245,14 @@
   services.pcscd.enable = true;
 
   # Suspend-then-hibernate everywhere
+
   services.logind = {
-    lidSwitch = "suspend-then-hibernate";
-    extraConfig = ''
-      HandlePowerKey=suspend-then-hibernate
-      IdleAction=suspend-then-hibernate
-      IdleActionSec=60m
-    '';
+    settings.Login.HandleLidSwitch = "suspend-then-hibernate";
+    # extraConfig = ''
+    #   HandlePowerKey=suspend-then-hibernate
+    #   IdleAction=suspend-then-hibernate
+    #   IdleActionSec=60m
+    # '';
   };
   systemd.sleep.extraConfig = ''
     HibernateDelaySec=2h
@@ -284,8 +285,8 @@
       #nerdfonts
       noto-fonts
       noto-fonts-cjk-sans
-      noto-fonts-emoji
-      ubuntu_font_family
+      noto-fonts-color-emoji
+      ubuntu-classic
       berkeley-mono-nerd-font
     ];
   };
