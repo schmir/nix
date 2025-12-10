@@ -18,14 +18,15 @@
     just
     nvd
 
-    fzf
-    entr
-    curl
-    wget
-    jq
     bat
-    fd
+    curl
+    entr
     eza
+    fd
+    fzf
+    gron
+    jq
+    wget
 
     # network tools
     dogdns
