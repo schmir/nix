@@ -9,6 +9,9 @@
   home.packages =
     with pkgs;
     [
+      gemini-cli
+      claude-code
+
       # build tools
       gnumake
       ninja
