@@ -29,7 +29,7 @@
     wget
 
     # network tools
-    dogdns
+    doggo
     mtr
     netcat
 
