@@ -28,7 +28,7 @@ in
     hunspellDicts.de_DE
     hunspellDicts.en_US
     isync
-    nixfmt-rfc-style
+    nixfmt
     msmtp
     multimarkdown
     nil
