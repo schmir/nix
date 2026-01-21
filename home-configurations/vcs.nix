@@ -11,7 +11,7 @@
     meld
     mr
     # nodejs
-    pre-commit
+    # pre-commit
     tig
   ];
 }
