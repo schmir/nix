@@ -30,6 +30,7 @@
       pwgen
       rage
 
+      stow
       yadm
 
       imagemagick
