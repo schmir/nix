@@ -41,6 +41,7 @@
       rclone
       restic
 
+      bkt
       hyperfine
 
       nixos-rebuild
