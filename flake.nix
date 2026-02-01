@@ -68,7 +68,7 @@
 
           # The platform the configuration will be used on.
           nixpkgs.hostPlatform = "aarch64-darwin";
-          ids.gids.nixbld = 30000;
+          ids.gids.nixbld = 350;
           homebrew = {
             enable = true;
             onActivation = {
