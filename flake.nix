@@ -96,21 +96,86 @@
             ApplePressAndHoldEnabled = false;
 
             # fast key repeat rate when hold
-            KeyRepeat = 1;
-            InitialKeyRepeat = 15;
+            KeyRepeat = 1; # lowest value for fastest repeat
+            InitialKeyRepeat = 15; # delay before repeat starts
+
+            # disable auto-correction annoyances
+            NSAutomaticCapitalizationEnabled = false; # no auto-capitalization
+            NSAutomaticDashSubstitutionEnabled = false; # no smart dashes
+            NSAutomaticPeriodSubstitutionEnabled = false; # no double-space period
+            NSAutomaticQuoteSubstitutionEnabled = false; # no smart quotes
+            NSAutomaticSpellingCorrectionEnabled = false; # no auto-correct
+
+            # faster window animations
+            NSAutomaticWindowAnimationsEnabled = false; # faster window opening
+            NSWindowResizeTime = 0.001; # faster resize
+            _HIHideMenuBar = true; # auto-hide menu bar
           };
           programs.zsh.enable = true;
-          system.defaults.dock.wvous-tl-corner = 2;
-          system.defaults.dock.show-recents = false;
-          system.defaults.dock.orientation = "bottom";
-          system.defaults.finder.ShowPathbar = true;
+          system.defaults.dock = {
+            wvous-tl-corner = 2; # top-left hot corner: mission control
+            show-recents = false; # don't show recent apps
+            orientation = "bottom"; # dock position
+            autohide = true; # automatically hide the dock
+            autohide-delay = 0.0; # no delay before showing
+            autohide-time-modifier = 0.2; # faster show/hide animation
+            mineffect = "scale"; # faster than genie effect
+            minimize-to-application = true; # minimize windows into app icon
+            mru-spaces = false; # don't auto-rearrange spaces by usage
+            tilesize = 48; # icon size in pixels
+            persistent-apps = [
+              "/System/Applications/Mail.app"
+              "/System/Applications/Calendar.app"
+              "/System/Applications/Notes.app"
+              "/System/Applications/Photos.app"
+              "/Applications/WezTerm.app"
+              "/Applications/Vivaldi.app"
+              "/Users/ralf/Applications/Home Manager Apps/Emacs.app"
+            ];
+          };
+          system.defaults.finder = {
+            ShowPathbar = true; # show path breadcrumbs at bottom
+            ShowStatusBar = true; # show status bar at bottom
+            FXPreferredViewStyle = "clmv"; # default to column view
+            QuitMenuItem = true; # allow quitting Finder via Cmd+Q
+            _FXShowPosixPathInTitle = true; # show full path in title bar
+            _FXSortFoldersFirst = true; # sort folders before files
+          };
           security.pam.services.sudo_local.touchIdAuth = true;
-          system.defaults.finder.QuitMenuItem = true;
-          system.defaults.finder.ShowStatusBar = true;
-          system.defaults.finder._FXShowPosixPathInTitle = true;
-          system.defaults.finder._FXSortFoldersFirst = true;
           system.defaults.loginwindow.GuestEnabled = false;
           system.defaults.menuExtraClock.Show24Hour = true;
+          system.defaults.trackpad.TrackpadRightClick = true;
+          system.defaults.WindowManager = {
+            # disable window tiling when dragging to screen edges
+            EnableTiledWindowMargins = false;
+            EnableTopTilingByEdgeDrag = false;
+            EnableTilingByEdgeDrag = true;
+          };
+          system.defaults.screencapture = {
+            location = "~/Screenshots"; # where screenshots are saved
+            type = "png"; # screenshot format
+            disable-shadow = true; # no window shadows in screenshots
+          };
+          system.defaults.SoftwareUpdate = {
+            AutomaticallyInstallMacOSUpdates = false; # don't auto-install macOS updates
+          };
+          system.defaults.screensaver = {
+            askForPassword = true; # require password to unlock
+            askForPasswordDelay = 5; # seconds before password required
+          };
+          system.defaults.LaunchServices = {
+            LSQuarantine = false; # disable "Are you sure you want to open?" dialog
+          };
+          system.keyboard = {
+            enableKeyMapping = true;
+            remapCapsLockToControl = true;
+          };
+          system.defaults.CustomUserPreferences = {
+            "com.apple.desktopservices" = {
+              DSDontWriteNetworkStores = true; # no .DS_Store on network volumes
+              DSDontWriteUSBStores = true; # no .DS_Store on USB drives
+            };
+          };
         };
 
     in
