@@ -109,7 +109,7 @@
             # faster window animations
             NSAutomaticWindowAnimationsEnabled = false; # faster window opening
             NSWindowResizeTime = 0.001; # faster resize
-            _HIHideMenuBar = true; # auto-hide menu bar
+            _HIHideMenuBar = false; # auto-hide menu bar
           };
           programs.zsh.enable = true;
           system.defaults.dock = {
