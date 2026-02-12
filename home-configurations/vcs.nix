@@ -6,6 +6,7 @@
     difftastic
     gitFull
     git-lfs
+    glab
     jujutsu
     lefthook
     meld
