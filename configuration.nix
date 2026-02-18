@@ -40,7 +40,10 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-
+  networking.networkmanager.plugins = with pkgs; [
+    networkmanager-l2tp
+    networkmanager_strongswan
+  ];
   # Turn of wifi powersave, otherwise I have high latency when pinging the WIFI Router on the P16s
   networking.networkmanager.wifi.powersave = false;
 
@@ -229,6 +232,11 @@
     wirelesstools
     xfsprogs
     zoxide
+
+    # l2tp vpn
+    strongswan
+    xl2tpd
+    strongswanNM
   ];
 
   environment.gnome.excludePackages = [ pkgs.simple-scan ];
