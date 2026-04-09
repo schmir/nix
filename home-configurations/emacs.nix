@@ -33,9 +33,9 @@ in
     multimarkdown
     nil
     nixd
-    nodePackages.bash-language-server
-    nodePackages.prettier
-    nodePackages.typescript-language-server
+    bash-language-server
+    prettier
+    typescript-language-server
     pyright
     ruff
     shellcheck
