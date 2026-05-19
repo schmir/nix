@@ -146,6 +146,11 @@
     fsType = "xfs";
   };
 
+  fileSystems."/backup" = {
+    device = "/dev/disk/by-uuid/5a33764a-ff92-4f3a-b3b4-131a69c579a7";
+    fsType = "xfs";
+  };
+
   swapDevices = [
     { device = "/dev/disk/by-uuid/15f41c50-25e6-4241-8d26-13c5dd2c57d9"; }
   ];
