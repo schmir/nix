@@ -148,8 +148,9 @@
       #  thunderbird
     ];
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICFqynqQEKJPRMj3/QsHoPIg0x5TfxaxR88NrVpZ4/1D ralf@neso.fritz.box"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHLBDG1au9pmxlrOrE/24ScUJ4hm70G7rCGXlQ/Q1MxW ralf@cirrus"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOeYkhwvgKEvyAR/ompwz6D5tfkCJP1h1MnTpHtophgo ralf@sao"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINSXgf3Ltmi5euHLtr3urvyrp8vMx49KBt5q7Xy3fDcp ralf@neso"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIH7r/RExnsdBO2kwJJshEP9ZxgifoQVEXoV+7jyC9sy ralf@halimede"
     ];
   };
 
