@@ -72,9 +72,11 @@
   powerManagement.resumeCommands = "${pkgs.util-linux}/bin/rfkill unblock bluetooth";
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/08f493eb-74aa-416c-980c-4d050440386e";
+    # device = "/dev/disk/by-uuid/08f493eb-74aa-416c-980c-4d050440386e";
+    device = "/dev/mapper/vg0-root";
     fsType = "btrfs";
     options = [
+      "x-systemd.device-timeout=infinity"
       "subvol=root"
       "compress=zstd"
       "noatime"
@@ -83,6 +85,7 @@
 
   fileSystems."/mnt/repos" = {
     device = "/home/ralf/repos";
+    fsType = "bind";
     options = [
       "bind"
       "X-mount.idmap=u:1000:1001:1 g:100:1001:1"

@@ -44,8 +44,10 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/a8c0564d-681c-4d10-9e63-4cf62a01dcbe";
+    #device = "/dev/disk/by-uuid/a8c0564d-681c-4d10-9e63-4cf62a01dcbe";
+    device = "/dev/mapper/luks-9d18830f-915d-4068-8df8-cebdb0fb1a97";
     fsType = "ext4";
+    options = [ "x-systemd.device-timeout=infinity" ];
   };
 
   boot.initrd.luks.devices."luks-9d18830f-915d-4068-8df8-cebdb0fb1a97".device =
@@ -62,6 +64,7 @@
 
   fileSystems."/mnt/repos" = {
     device = "/home/ralf/repos";
+    fsType = "bind";
     options = [
       "bind"
       "X-mount.idmap=u:1000:1001:1 g:100:1001:1"

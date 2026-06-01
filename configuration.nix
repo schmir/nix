@@ -199,11 +199,11 @@
     openssl
     curl
     expat
-    xorg.libX11
-    xorg.libXext
-    xorg.libXrender
-    xorg.libXtst
-    xorg.libXi
+    libX11
+    libXext
+    libXrender
+    libXtst
+    libXi
   ];
 
   # Fix VPN, see https://github.com/NixOS/nixpkgs/issues/375352#issue-2800029311
@@ -263,10 +263,10 @@
     #   IdleActionSec=60m
     # '';
   };
-  systemd.sleep.extraConfig = ''
-    HibernateDelaySec=2h
-    SuspendState=mem
-  '';
+  # systemd.sleep.extraConfig = ''
+  #   HibernateDelaySec=2h
+  #   SuspendState=mem
+  # '';
 
   # Enable the OpenSSH daemon.
   services.openssh = {
