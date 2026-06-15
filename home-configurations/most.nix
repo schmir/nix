@@ -11,6 +11,7 @@
     [
       gemini-cli
       claude-code
+      pi-coding-agent
 
       # build tools
       gnumake
