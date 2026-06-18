@@ -41,5 +41,7 @@ in
     shellcheck
     shfmt
     #ollama
+    yaml-language-server
+    tombi
   ];
 }
