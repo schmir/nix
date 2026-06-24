@@ -1,0 +1,10 @@
+"$schema" = "https://raw.githubusercontent.com/schmir/repoactive/refs/heads/main/config-schema.json"
+
+[job-defaults]
+branch_prefix = "repoactive/"
+
+[[job]]
+name = "update-flake"
+command = "just update"
+title = "build: update flake inputs"
+cooldown_period = "3d"
