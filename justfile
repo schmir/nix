@@ -4,11 +4,13 @@ default:
 
 # Update everything
 update:
-    nix flake update
+    ./update-flake.sh
+    #nix flake update
 
 # Update emacs
 update-emacs:
-    nix flake update schmir-emacs
+    ./update-flake.sh schmir-emacs
+    #nix flake update schmir-emacs
 
 # Run home-manager switch
 home-manager:
