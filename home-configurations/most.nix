@@ -9,7 +9,6 @@
   home.packages =
     with pkgs;
     [
-      gemini-cli
       claude-code
       pi-coding-agent
 
