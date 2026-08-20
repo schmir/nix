@@ -1,0 +1,21 @@
+# Formatter configuration for treefmt; run via `nix fmt` or `just fmt`.
+excludes = ["*.pem", "flake.lock"]
+
+[formatter.nixfmt]
+command = "nixfmt"
+includes = ["*.nix"]
+
+[formatter.shfmt]
+command = "shfmt"
+options = ["--indent", "4", "--simplify", "--write"]
+includes = ["*.sh"]
+
+[formatter.taplo]
+command = "taplo"
+options = ["format"]
+includes = ["*.toml"]
+
+[formatter.prettier]
+command = "prettier"
+options = ["--write"]
+includes = ["*.md"]

@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }:
@@ -18,12 +19,5 @@
       zoxide
       starship
     ]
-    ++ (
-      if pkgs.stdenv.isDarwin then
-        [
-          bash
-        ]
-      else
-        [ ]
-    );
+    ++ lib.optional pkgs.stdenv.hostPlatform.isDarwin bash;
 }

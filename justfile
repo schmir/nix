@@ -2,6 +2,14 @@
 default:
     just --list
 
+# Format all nix files
+fmt:
+    nix fmt
+
+# Run nix flake check, e.g. `just check --all-systems`
+check *ARGS:
+    nix flake check -L {{ ARGS }}
+
 # Update everything
 update:
     ./update-flake.sh

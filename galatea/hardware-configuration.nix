@@ -78,6 +78,7 @@
 
   fileSystems."/mnt/repos" = {
     device = "/home/ralf/repos";
+    fsType = "bind";
     options = [
       "bind"
       "X-mount.idmap=u:1000:1001:1 g:100:1001:1"

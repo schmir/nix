@@ -14,7 +14,7 @@ in
     package = emacs;
   };
   services.emacs = {
-    enable = pkgs.stdenv.isLinux;
+    enable = pkgs.stdenv.hostPlatform.isLinux;
     package = emacs;
     startWithUserSession = "graphical";
   };

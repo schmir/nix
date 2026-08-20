@@ -47,5 +47,5 @@
       nixos-rebuild
       inputs.nix-index.packages.${pkgs.stdenv.hostPlatform.system}.default
     ]
-    ++ (if pkgs.stdenv.isDarwin then [ pinentry_mac ] else [ pinentry-gnome3 ]);
+    ++ (if pkgs.stdenv.hostPlatform.isDarwin then [ pinentry_mac ] else [ pinentry-gnome3 ]);
 }

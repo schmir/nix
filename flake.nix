@@ -34,16 +34,51 @@
       ...
     }@inputs:
     let
+      # x86_64-darwin is gone: nixpkgs 26.11 dropped support for it.
       systems = [
         "aarch64-linux"
         "x86_64-linux"
         "aarch64-darwin"
-        "x86_64-darwin"
       ];
 
-      mkSystem = system: {
-        legacyPackages.homeConfigurations = import ./home-configurations (inputs // { inherit system; });
-      };
+      mkSystem =
+        system:
+        let
+          pkgs = inputs.nixpkgs.legacyPackages.${system};
+          homeConfigurations = import ./home-configurations (inputs // { inherit system; });
+
+          # treefmt, driven by ./treefmt.toml, with every formatter that file
+          # names on PATH.
+          treefmt = pkgs.writeShellApplication {
+            name = "treefmt";
+            runtimeInputs = with pkgs; [
+              nixfmt-rfc-style
+              prettier
+              shfmt
+              taplo
+            ];
+            text = ''exec ${pkgs.lib.getExe pkgs.treefmt} "$@"'';
+          };
+        in
+        {
+          legacyPackages.homeConfigurations = homeConfigurations;
+
+          # `nix fmt`
+          formatter = treefmt;
+
+          # `nix flake check` also evaluates nixosConfigurations and
+          # darwinConfigurations on its own; the home configurations live under
+          # legacyPackages, so they need to be listed here explicitly.
+          checks = {
+            formatting = pkgs.runCommand "check-formatting" { nativeBuildInputs = [ treefmt ]; } ''
+              cp --recursive --no-preserve=mode ${self} src
+              treefmt --ci --walk filesystem --tree-root src --config-file src/treefmt.toml
+              touch $out
+            '';
+
+            home-ralf = homeConfigurations.ralf.activationPackage;
+          };
+        };
       darwin-configuration =
         { pkgs, ... }:
         {
