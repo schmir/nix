@@ -17,7 +17,7 @@
       gnumake
       ninja
       bmake
-      circleci-cli
+      #circleci-cli
 
       cloc
       treefmt

@@ -8,7 +8,7 @@
     git-lfs
     glab
     jujutsu
-    lefthook
+    #lefthook
     meld
     mr
     # nodejs
