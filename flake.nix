@@ -52,7 +52,7 @@
           treefmt = pkgs.writeShellApplication {
             name = "treefmt";
             runtimeInputs = with pkgs; [
-              nixfmt-rfc-style
+              nixfmt
               prettier
               shfmt
               taplo
