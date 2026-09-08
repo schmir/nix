@@ -21,6 +21,8 @@
     my-fonts.url = "git+ssh://git@github.com/schmir/fonts.git?ref=main";
     my-fonts.inputs.nixpkgs.follows = "nixpkgs";
 
+    spork.url = "github:janet-lang/spork";
+    spork.flake = false;
   };
 
   outputs =

@@ -36,6 +36,7 @@ let
     ./clojure.nix
     ./emacs.nix
     ./golang.nix
+    ./janet.nix
     ./most.nix
     ./tls.nix
     #    ./python.nix
