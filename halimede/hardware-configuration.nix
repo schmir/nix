@@ -13,7 +13,7 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
-  virtualisation.docker.storageDriver = "btrfs";
+  # virtualisation.docker.storageDriver = "btrfs";
   virtualisation.docker.daemon.settings = {
     features = {
       containerd-snapshotter = true;
