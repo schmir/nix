@@ -88,7 +88,9 @@
     fsType = "bind";
     options = [
       "bind"
-      "X-mount.idmap=u:1000:1001:1 g:100:1001:1"
+      # u:0:0:1/g:0:0:1 let containers that run as root create files here;
+      # without it every mkdir/create by uid 0 fails with EOVERFLOW.
+      "X-mount.idmap=u:0:0:1 u:1000:1001:1 g:0:0:1 g:100:1001:1"
     ];
   };
 
