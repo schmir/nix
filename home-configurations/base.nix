@@ -25,6 +25,7 @@
     fd
     fzf
     gron
+    jp
     jq
     wget
 
