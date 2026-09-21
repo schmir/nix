@@ -134,6 +134,13 @@
   ];
   nix.settings.auto-optimise-store = true;
 
+  # Same policy as the `just gc` recipe, but without having to remember it.
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 60d";
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ralf = {
     shell = pkgs.zsh;
