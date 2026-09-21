@@ -181,6 +181,12 @@
 
   # kvm / virt-manager
   virtualisation.libvirtd.enable = true;
+  # Resolve guests by name on the host: "libvirt" uses the DHCP hostname the
+  # guest reports, "libvirt_guest" the libvirt domain name.
+  virtualisation.libvirtd.nss = {
+    enable = true;
+    enableGuest = true;
+  };
   programs.virt-manager.enable = true;
 
   virtualisation.docker.enable = true;
