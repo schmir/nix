@@ -46,13 +46,6 @@ let
     ./${system}.nix
     ./dconf.nix
   ];
-
-  allModules = (
-    mostModules
-    ++ [
-      ./texlive.nix
-    ]
-  );
 in
 {
   "ralf" = mkHomeConfig system mostModules;
