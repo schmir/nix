@@ -19,6 +19,8 @@
   nixpkgs.overlays = [ inputs.my-fonts.overlays.default ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  # Keep /boot from filling up with old kernels.
+  boot.loader.systemd-boot.configurationLimit = 10;
   boot.loader.efi.canTouchEfiVariables = false;
   #boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.kernelPackages = pkgs.linuxPackages_6_10;
