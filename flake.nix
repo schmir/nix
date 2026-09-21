@@ -218,48 +218,29 @@
     in
     flake-utils.lib.eachSystem systems mkSystem
     // {
-      nixosConfigurations.sao = nixpkgs-stable.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          hostname = "sao";
-        };
-        modules = [
-          ./configuration.nix
-        ];
-      };
+      # Every host builds the same configuration.nix; the hostname picks the
+      # matching hardware-configuration.nix.
+      nixosConfigurations =
+        nixpkgs-stable.lib.genAttrs
+          [
+            "sao"
+            "triton"
+            "halimede"
+            "galatea"
+          ]
+          (
+            hostname:
+            nixpkgs-stable.lib.nixosSystem {
+              system = "x86_64-linux";
+              specialArgs = {
+                inherit inputs hostname;
+              };
+              modules = [
+                ./configuration.nix
+              ];
+            }
+          );
 
-      nixosConfigurations.triton = nixpkgs-stable.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          hostname = "triton";
-        };
-        modules = [
-          ./configuration.nix
-        ];
-      };
-      nixosConfigurations.halimede = nixpkgs-stable.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          hostname = "halimede";
-        };
-        modules = [
-          ./configuration.nix
-        ];
-      };
-
-      nixosConfigurations.galatea = nixpkgs-stable.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          hostname = "galatea";
-        };
-        modules = [
-          ./configuration.nix
-        ];
-      };
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#neso
       darwinConfigurations."neso" = nix-darwin.lib.darwinSystem {
