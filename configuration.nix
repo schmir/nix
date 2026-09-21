@@ -118,10 +118,10 @@
   services.libinput.enable = true;
 
   services.flatpak.enable = true;
+  services.flatpak.uninstallUnmanaged = true;
   services.flatpak.packages = [
     "ca.desrt.dconf-editor"
-    "com.google.Chrome"
-    "com.slack.Slack"
+    "com.github.tchx84.Flatseal"
     "com.spotify.Client"
     "com.vivaldi.Vivaldi"
     "hu.irl.cameractrls"
