@@ -43,6 +43,15 @@
         "aarch64-darwin"
       ];
 
+      # The NixOS release each host was first installed with; see
+      # system.stateVersion. This is per machine, not a version to bump.
+      hostStateVersions = {
+        sao = "24.05";
+        triton = "24.05";
+        halimede = "24.11";
+        galatea = "24.05";
+      };
+
       mkSystem =
         system:
         let
@@ -220,26 +229,18 @@
     // {
       # Every host builds the same configuration.nix; the hostname picks the
       # matching hardware-configuration.nix.
-      nixosConfigurations =
-        nixpkgs-stable.lib.genAttrs
-          [
-            "sao"
-            "triton"
-            "halimede"
-            "galatea"
-          ]
-          (
-            hostname:
-            nixpkgs-stable.lib.nixosSystem {
-              system = "x86_64-linux";
-              specialArgs = {
-                inherit inputs hostname;
-              };
-              modules = [
-                ./configuration.nix
-              ];
-            }
-          );
+      nixosConfigurations = builtins.mapAttrs (
+        hostname: stateVersion:
+        nixpkgs-stable.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs hostname stateVersion;
+          };
+          modules = [
+            ./configuration.nix
+          ];
+        }
+      ) hostStateVersions;
 
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#neso
