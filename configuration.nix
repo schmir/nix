@@ -126,7 +126,6 @@
     "com.vivaldi.Vivaldi"
     "hu.irl.cameractrls"
     "org.gnome.SimpleScan"
-    "org.mozilla.firefox"
     "org.torproject.torbrowser-launcher"
   ];
   nix.settings.experimental-features = [
@@ -186,7 +185,6 @@
   #   ];
   # };
 
-  programs.firefox.enable = false;
   programs.nano.enable = false;
 
   # kvm / virt-manager

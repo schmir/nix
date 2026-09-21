@@ -127,7 +127,6 @@
             taps = [ ];
             brews = [ ];
             casks = [
-              "firefox"
               "tor-browser"
               "utm"
               "vivaldi"
