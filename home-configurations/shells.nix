@@ -19,5 +19,5 @@
       zoxide
       starship
     ]
-    ++ lib.optional pkgs.stdenv.hostPlatform.isDarwin bash;
+    ++ lib.optional pkgs.stdenv.hostPlatform.isDarwin bashInteractive;
 }
