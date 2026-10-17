@@ -27,7 +27,12 @@
       age-plugin-yubikey
       apg
       gnupg
-      passage
+      # nixpkgs installs platform.sh to lib/password-store, but the script sources lib/passage
+      (passage.overrideAttrs (old: {
+        postInstall = (old.postInstall or "") + ''
+          ln -s password-store $out/lib/passage
+        '';
+      }))
       pwgen
       rage
 
