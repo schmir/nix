@@ -355,11 +355,11 @@
         "sync": "sync"
       },
       "locked": {
-        "lastModified": 1792323936,
-        "narHash": "sha256-oIQo98yJfvwAA8tGjOXC48PL+s/fWGLNy12dXQQULks=",
+        "lastModified": 1792407182,
+        "narHash": "sha256-3qvKQcGC0Mrp96+WjR+iGvP+oibLdoksoPHHn3o9WvM=",
         "owner": "schmir",
         "repo": ".emacs.d",
-        "rev": "4d4a47b5e972551e8ddf5e01aad7f39109ecce37",
+        "rev": "b48fcce26c4c1704cebe3c367b5fb7f75b9591e9",
         "type": "github"
       },
       "original": {
