@@ -37,6 +37,9 @@ let
     ./golang.nix
     ./janet.nix
     ./most.nix
+    ./secrets.nix
+    ./documents.nix
+    ./backup.nix
     ./tls.nix
     #    ./python.nix
     ./vcs.nix
@@ -45,8 +48,31 @@ let
     ./${system}.nix
     ./dconf.nix
   ];
+
+  # The 'user' account runs inside Qubes OS qubes. Every qube picks the
+  # combination that matches its purpose.
+  qubeCore = [
+    ./user.nix
+    ./base.nix
+    ./shells.nix
+    ./vcs.nix
+  ];
+  qubeDev = qubeCore ++ [
+    ./emacs.nix
+    ./most.nix
+  ];
 in
 {
   "ralf" = mkHomeConfig system ([ ./ralf.nix ] ++ mostModules);
-  "user" = mkHomeConfig system ([ ./user.nix ] ++ mostModules);
+
+  "user" = mkHomeConfig system qubeCore;
+  "user-clojure" = mkHomeConfig system (qubeDev ++ [ ./clojure.nix ]);
+  "user-work" = mkHomeConfig system (
+    qubeDev
+    ++ [
+      ./golang.nix
+      ./lulu.nix
+      ./tls.nix
+    ]
+  );
 }

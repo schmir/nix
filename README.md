@@ -12,7 +12,8 @@ Enable flake:
 mkdir -p ~/.config/nix; echo 'experimental-features = nix-command flakes' |tee -a ~/.config/nix/nix.conf
 ```
 
-Bootstrap without checkout, replacing `user` with `ralf` when needed. This needs
+Bootstrap without checkout, replacing `user` with the configuration you need:
+`ralf`, or `user`, `user-clojure` or `user-work` in a Qubes OS qube. This needs
 an SSH key with read access to `git@github.com:schmir/fonts.git`. `-b backup`
 renames existing files that would be replaced to `*.backup`:
 

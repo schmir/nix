@@ -79,17 +79,17 @@
 
           # `nix flake check` also evaluates nixosConfigurations and
           # darwinConfigurations on its own; the home configurations live under
-          # legacyPackages, so they need to be listed here explicitly.
+          # legacyPackages, so they need to be added here explicitly.
           checks = {
             formatting = pkgs.runCommand "check-formatting" { nativeBuildInputs = [ treefmt ]; } ''
               cp --recursive --no-preserve=mode ${self} src
               treefmt --ci --walk filesystem --tree-root src --config-file src/treefmt.toml
               touch $out
             '';
-
-            home-ralf = homeConfigurations.ralf.activationPackage;
-            home-user = homeConfigurations.user.activationPackage;
-          };
+          }
+          // pkgs.lib.mapAttrs' (
+            name: config: pkgs.lib.nameValuePair "home-${name}" config.activationPackage
+          ) homeConfigurations;
         };
       darwin-configuration =
         { pkgs, ... }:
