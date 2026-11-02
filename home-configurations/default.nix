@@ -30,7 +30,6 @@ let
       };
     };
   mostModules = [
-    ./ralf.nix
     ./base.nix
     ./shells.nix
     ./clojure.nix
@@ -48,5 +47,6 @@ let
   ];
 in
 {
-  "ralf" = mkHomeConfig system mostModules;
+  "ralf" = mkHomeConfig system ([ ./ralf.nix ] ++ mostModules);
+  "user" = mkHomeConfig system ([ ./user.nix ] ++ mostModules);
 }

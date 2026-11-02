@@ -88,6 +88,7 @@
             '';
 
             home-ralf = homeConfigurations.ralf.activationPackage;
+            home-user = homeConfigurations.user.activationPackage;
           };
         };
       darwin-configuration =

@@ -12,8 +12,17 @@ Enable flake:
 mkdir -p ~/.config/nix; echo 'experimental-features = nix-command flakes' |tee -a ~/.config/nix/nix.conf
 ```
 
-Bootstrap without checkout:
+Bootstrap without checkout, replacing `user` with `ralf` when needed. This needs
+an SSH key with read access to `git@github.com:schmir/fonts.git`. `-b backup`
+renames existing files that would be replaced to `*.backup`:
 
 ```shell
-nix run --no-write-lock-file github:nix-community/home-manager/ -- --flake "github:schmir/nix/#cirrus" switch
+nix run --no-write-lock-file github:nix-community/home-manager/ -- switch -b backup --flake "github:schmir/nix#user"
+```
+
+Log out and back in to load the new environment. `home-manager` is installed by
+the configuration, so later updates only need:
+
+```shell
+home-manager switch --flake "github:schmir/nix#user"
 ```
