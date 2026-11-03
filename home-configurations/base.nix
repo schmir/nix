@@ -11,12 +11,11 @@
     moreutils
     tealdeer
 
-    comma
     ripgrep
     rlwrap
     file
     just
-    nvd
+    lnav
 
     bat
     curl
@@ -36,9 +35,7 @@
 
     zip
     unzip
-    dive
 
-    graphviz
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello

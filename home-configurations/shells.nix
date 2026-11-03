@@ -17,7 +17,6 @@
       # direnv
       # nix-direnv
       zoxide
-      starship
     ]
     ++ lib.optional pkgs.stdenv.hostPlatform.isDarwin bashInteractive;
 }

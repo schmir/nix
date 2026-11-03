@@ -37,9 +37,14 @@ let
     ./golang.nix
     ./janet.nix
     ./most.nix
+    ./ai.nix
+    ./nix.nix
+    ./nixos.nix
     ./secrets.nix
     ./documents.nix
     ./backup.nix
+    ./containers.nix
+    ./desktop.nix
     ./tls.nix
     #    ./python.nix
     ./vcs.nix
@@ -56,10 +61,13 @@ let
     ./base.nix
     ./shells.nix
     ./vcs.nix
+    ./nix.nix
   ];
   qubeDev = qubeCore ++ [
     ./emacs.nix
     ./most.nix
+    ./ai.nix
+    ./desktop.nix
   ];
 in
 {
@@ -70,6 +78,7 @@ in
   "user-work" = mkHomeConfig system (
     qubeDev
     ++ [
+      ./containers.nix
       ./golang.nix
       ./lulu.nix
       ./tls.nix

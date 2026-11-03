@@ -4,15 +4,13 @@
   home.packages = with pkgs; [
     diffstat
     difftastic
-    gitFull
+    git
     git-lfs
-    glab
     jujutsu
     #lefthook
     meld
-    mr
+    yadm
     # nodejs
     # pre-commit
-    tig
   ];
 }

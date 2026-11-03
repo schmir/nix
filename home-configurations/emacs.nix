@@ -43,5 +43,6 @@ in
     #ollama
     yaml-language-server
     tombi
+    taplo
   ];
 }

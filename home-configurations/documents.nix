@@ -6,5 +6,6 @@
     img2pdf
     pdftk
     ghostscript_headless
+    graphviz
   ];
 }

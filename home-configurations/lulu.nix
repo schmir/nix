@@ -23,7 +23,7 @@
       ln -s ${copier}/bin/copier $out/bin/copier
     '')
 
-    hadolint
+    glab
     kubectl
     kubectx
     #pulumi-bin
