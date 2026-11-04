@@ -36,24 +36,33 @@ nixos-build:
 
 # Run nixos-rebuild switch
 nixos-switch: nixos-build
-    sudo nixos-rebuild switch -L --flake .
+    sudo -H nixos-rebuild switch -L --flake .
 
 # Run nixos-rebuild test
 nixos-test: nixos-build
-    sudo nixos-rebuild test -L --flake .
+    sudo -H nixos-rebuild test -L --flake .
 
 # Run nixos-rebuild dry-activate
 nixos-dry-activate:
-    sudo nixos-rebuild dry-activate -L --flake .
+    sudo -H nixos-rebuild dry-activate -L --flake .
 
-# Collect nix store garbage
-nix-store-gc:
-    nix-store --gc
+# List gc roots, excluding system profiles, memory and process roots
+gc-roots:
+    nix-store --gc --print-roots | egrep -v '^"?(/nix/var|/run/\w+-system|\{memory|/proc)'
 
 # Run nix-darwin switch
 nix-darwin-switch:
-    sudo nix run nix-darwin -- switch --flake .
+    sudo -H nix run nix-darwin -- switch --flake .
 
-# Collect garbage older than 60d
+# Age in days after which `gc` deletes generations and direnv caches,
+# e.g. `just maxage=60 gc`
+maxage := "20"
+
+# Collect garbage older than maxage
 gc:
-    sudo nix-collect-garbage --delete-older-than 60d
+    # drop nix-direnv dev shell caches unused for {{ maxage }}d (rebuilt on next cd)
+    find ~/.cache/direnv/layouts -mindepth 1 -maxdepth 1 -mtime +{{ maxage }} -exec rm -rf {} +
+    # without sudo: prune user profiles (~/.local/state/nix/profiles)
+    nix-collect-garbage --delete-older-than {{ maxage }}d
+    # with sudo: prune root and system profiles (/nix/var/nix/profiles)
+    sudo -H nix-collect-garbage --delete-older-than {{ maxage }}d
