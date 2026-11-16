@@ -9,7 +9,8 @@
       apg
       gnupg
       # nixpkgs installs platform.sh to lib/password-store, but the script sources lib/passage
-      (passage.overrideAttrs (old: {
+      # use rage instead of age: nixpkgs hardcodes the age path and drops PASSAGE_AGE
+      ((passage.override { age = rage; }).overrideAttrs (old: {
         postInstall = (old.postInstall or "") + ''
           ln -s password-store $out/lib/passage
         '';
