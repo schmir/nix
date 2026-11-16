@@ -17,5 +17,19 @@
       pwgen
       rage
     ]
-    ++ (if pkgs.stdenv.hostPlatform.isDarwin then [ pinentry_mac ] else [ pinentry-gnome3 ]);
+    ++ (
+      if pkgs.stdenv.hostPlatform.isDarwin then
+        [
+          # also provide the generic name `pinentry`
+          (symlinkJoin {
+            name = "pinentry-mac-with-alias";
+            paths = [ pinentry_mac ];
+            postBuild = ''
+              ln -s pinentry-mac $out/bin/pinentry
+            '';
+          })
+        ]
+      else
+        [ pinentry-gnome3 ]
+    );
 }
