@@ -196,6 +196,8 @@
     enableGuest = true;
   };
   programs.virt-manager.enable = true;
+  # USB passthrough to guests in virt-manager.
+  virtualisation.spiceUSBRedirection.enable = true;
 
   virtualisation.docker.enable = true;
   virtualisation.podman.enable = true;
